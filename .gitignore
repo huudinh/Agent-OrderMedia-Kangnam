@@ -1,0 +1,28 @@
+# ⛔ PHIẾU KỊCH BẢN CÓ THỂ CHỨA THÔNG TIN KHÁCH HÀNG + DỮ LIỆU GIÁ.
+# Không commit file order gốc, phiếu đã xuất, hay bất cứ thứ gì còn tên/SĐT khách.
+out/*
+!out/.gitkeep
+
+# ⛔ Ảnh, CT, hồ sơ, footage khách hàng — KHÔNG BAO GIỜ commit.
+anh-khach/
+case/
+footage/
+*.mp4
+*.mov
+*.jpg
+*.jpeg
+*.png
+*.heic
+
+# File order tải về để xử lý
+order-*.csv
+order-*.xlsx
+*.local.csv
+*.local.xlsx
+
+__pycache__/
+*.pyc
+*.local.json
+~$*
+.DS_Store
+Thumbs.db

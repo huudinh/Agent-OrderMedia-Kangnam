@@ -171,7 +171,9 @@ Viết cho DOP, không viết cho giám đốc marketing.
 | 41 | `NGƯỠNG TỐT` | từ ô camp (`om-F` §3) *(suy ra)* |
 | 42 | `NGƯỠNG KÉM` | `>1,3×` ngưỡng tốt *(suy ra)* |
 
-> Bảng trên có **42 ô** nếu đếm từng cột; gom lại là **32 trường nội dung** trong 6 khối — §9 của SYSTEM-PROMPT gọi theo cách gom.
+> ★ **42 trường.** `tools/om.py` xuất **51 cột** = 42 trường này + **9 cột chẩn đoán** của script:
+> `CỔNG A` · `CHẶN` · `CẢNH BÁO` · `GHI CHÚ FORMAT` · `THÀNH PHẦN CÓ` · `KIỂU KÉM TRÚNG` · `KẾT QUẢ ĐO` · `HIỆU QUẢ (ad cũ)` · `LINK (tái dựng?)`.
+> Script để `<< B5 — agent viết >>` ở **5 trường sáng tạo** (lời thoại · text on screen · shot list · nhạc & tốc độ cắt · caption) và `<< B4 — agent điền nếu đổi hook >>` ở trường 23.
 > ⚠️ **Mọi ô suy ra in kèm `(suy ra)`.** Người order phải phân biệt được cái họ viết và cái agent điền.
 
 ### Hai khối bắt buộc in cuối bảng

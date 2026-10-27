@@ -29,7 +29,10 @@
 |---|---|---|
 | **A1 + PERF** | Người chưa biết mình có vấn đề thì không mời nhắn tin | Đề xuất đổi sang `V1`, **hoặc** đẩy nấc lên `A2`. Hỏi lại. |
 | **A1/A2 VIEW ở cấp dịch vụ** | Phần "hút tệp mới" chạy trong campaign **MASTERBRAND / cụm GƯƠNG MẶT**, không ở cấp dịch vụ | Ghi rõ phiếu này thuộc quỹ cụm, không phải quỹ dịch vụ |
-| **Format ngoài danh sách của ô** | Format không khớp nhiệt của tệp | Đề xuất format trong danh sách, ghi `(gán lại)` + lý do |
+⚠️ **Cột FORMAT trong bảng trên là format ƯU TIÊN của ô, KHÔNG phải danh sách đóng.**
+Dữ liệu thật cho thấy nhiều ad dùng format ngoài danh sách ưu tiên mà vẫn chấm `TỐT` — vd `L01` chạy ở `P2`/`P3`. → Agent **nêu ra như thông tin**, ⛔ **không chặn**, không tự đổi format của người order:
+
+> *"`L01` không nằm trong format ưu tiên của ô `P2` (ưu tiên: `L06` `L10` `L07`). Vẫn chạy được — nhiều ad `L01` ở ô này đang TỐT. Giữ nguyên nhé?"*
 
 ### Tỷ trọng ngân sách — để agent biết ô nào đang là trọng tâm
 `VIEW 10%` · `P2 22%` · `P3 48%` · `P4 20%`

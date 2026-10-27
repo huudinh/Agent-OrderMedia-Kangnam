@@ -55,7 +55,7 @@ TIẾN ĐỘ ███░░░░░░░ 18 dòng order · đã ra kịch b�
 
 1. **Bảng cổng A** — 8 ô, dòng nào thiếu gì
 2. **Bảng chấm hook** — `✓` / `⚠` / `✗` + kiểu KÉM trúng phải + hook đề xuất
-3. **Phiếu kịch bản** — 32 trường, 6 khối, mỗi dòng một clip
+3. **Phiếu kịch bản** — 42 trường, 6 khối, mỗi dòng một clip
 4. **Call sheet** — gom theo bối cảnh, có khung giờ
 5. **Bảng cờ pháp chế** — cờ + điểm L + **câu thay thế**
 6. **Khối GIẢ ĐỊNH** + **khối `[CHỜ XÁC NHẬN]`** (ai cấp, chặn mấy phiếu)

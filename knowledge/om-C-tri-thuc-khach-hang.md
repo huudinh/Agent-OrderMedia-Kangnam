@@ -143,7 +143,19 @@ Ví dụ thật (pilot mũi, 34 content đang giữ):
 ④ CTA GỬI ẢNH TÌNH TRẠNG   rẻ hơn "nhận báo giá", vì khách chưa muốn nói chuyện tiền
 ```
 
-**Hook đủ 2–3 thành phần → `✓ QUAY ĐƯỢC`. Chỉ 1 → `⚠ SỬA RỒI QUAY`. Không có thành phần nào → `✗ ĐỔI HOOK`.**
+### ★ Luật chấm — thành phần ① là cổng
+
+> **① GỌI ĐÚNG TÌNH TRẠNG là thành phần quyết định, không phải "một trong bốn".**
+
+| Chấm | Điều kiện |
+|---|---|
+| `✓ QUAY ĐƯỢC` | **Có ①** *(dù chỉ một mình)*, **hoặc** có ≥2 thành phần khác |
+| `⚠ SỬA RỒI QUAY` | Có ② hoặc ③ nhưng **thiếu ①** → thêm tình trạng vào là xong |
+| `✗ ĐỔI HOOK` | Không có thành phần nào, **hoặc** trúng một trong 7 kiểu KÉM |
+
+⚠️ **Vì sao ① một mình là đủ:** dữ liệu thật cho thấy *"Mũi từng nâng nhưng không đẹp thì bao lâu sửa lại được?"* chỉ có ① mà chấm **TỐT**. Ngược lại hook có ② ③ đầy đủ nhưng không gọi tình trạng thì khách không nhận ra mình, nên không dừng lại ở giây thứ 3.
+
+⚠️ **Trúng kiểu KÉM nhưng vẫn có ①** → `⚠`, không phải `✗`. Giữ phần gọi tình trạng, bỏ phần vi phạm. VD *"SỰ THẬT CHẤN ĐỘNG: chị em miền Tây…"* → bỏ chữ *CHẤN ĐỘNG*, giữ nguyên phần còn lại (ad này chấm **TỐT**).
 
 Ví dụ ad **TỐT** thật:
 

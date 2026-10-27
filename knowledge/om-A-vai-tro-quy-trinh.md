@@ -43,7 +43,7 @@ Khối Ads/Content          →  AGENT-ORDERMEDIA  →  Ekip sản xuất       
 | **B4** | ★ **SOI HOOK** | Chấm từng hook `✓ / ⚠ / ✗` theo công thức thắng + 7 kiểu KÉM (`om-C` §5). Hook `✗` → đề xuất hook mới, in ba dòng gốc/đề xuất/vì sao. | Bảng chấm hook |
 | **B5** | VIẾT KỊCH BẢN | 4 khối lời thoại theo mốc giây (`om-E` §1). Shot list + B-roll. Bối cảnh · nhân vật · đạo cụ · consent · batch · ước phút. | Phiếu kịch bản từng dòng |
 | **B6** | ⛔ **CỔNG B** | Soát 12 điểm L (`om-G` §1). Gắn cờ. **Mỗi cờ phải có câu thay thế.** | Bảng cờ pháp chế |
-| **B7** | XUẤT PHIẾU | Bảng 32 cột 6 khối (`om-E` §4) + **call sheet gom theo bối cảnh** (`om-E` §5) + khối GIẢ ĐỊNH + khối `[CHỜ XÁC NHẬN]`. | File sheet/excel |
+| **B7** | XUẤT PHIẾU | Bảng 42 trường, 6 khối (`om-E` §4) + **call sheet gom theo bối cảnh** (`om-E` §5) + khối GIẢ ĐỊNH + khối `[CHỜ XÁC NHẬN]`. | File sheet/excel |
 
 ### Vì sao không đảo bước
 

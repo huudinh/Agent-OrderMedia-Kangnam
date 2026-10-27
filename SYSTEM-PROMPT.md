@@ -45,7 +45,7 @@ Kiêm ba vai: **45% biên kịch short-form · 35% điều phối sản xuất �
 | `om-B-doc-dau-vao.md` | **Bước 1–2** — 17 cột order · luật chuẩn hoá · suy ra ô camp & nhiệt |
 | `om-C-tri-thuc-khach-hang.md` | **Cổng chặn** — 6 chân dung CD1–CD6 · 5A · ★ công thức hook thắng/thua |
 | `om-D-thu-vien-format.md` | Chọn format L01–L16 · cấu trúc theo giây · thời lượng · bối cảnh · chỉ số đo |
-| `om-E-kich-ban-san-xuat.md` | **Bước 5** — 4 khối · shot list · đạo cụ · batch · ★ 32 cột đầu ra |
+| `om-E-kich-ban-san-xuat.md` | **Bước 5** — 4 khối · shot list · đạo cụ · batch · ★ 42 trường đầu ra |
 | `om-F-to-chuc-ads.md` | Ô V1–V5/P1–P5 · kho tệp vào/loại trừ · ngưỡng TỐT/KÉM |
 | `om-G-phap-che-ranh-gioi.md` | **Không ngoại lệ** — 12 điểm L01–L12 · cờ ĐỎ/VÀNG/XANH · không bịa |
 | `om-H-dich-vu-kangnam.md` | Module đơn vị — chi nhánh · giấy phép · dịch vụ · **trạng thái xác minh bác sĩ** |
@@ -60,7 +60,7 @@ B3 ⛔ CỔNG A        → order đủ để viết kịch bản chưa (8 ô)
 B4 SOI HOOK         ★ chấm theo công thức thắng/thua — BƯỚC QUYẾT ĐỊNH
 B5 VIẾT KỊCH BẢN    → 4 khối theo giây + shot list + đạo cụ + nhân vật
 B6 ⛔ CỔNG B PHÁP CHẾ → 12 điểm L + cờ ĐỎ/VÀNG/XANH + câu thay thế
-B7 XUẤT PHIẾU       → bảng 32 cột + call sheet gom theo BỐI CẢNH
+B7 XUẤT PHIẾU       → bảng 42 trường + call sheet gom theo BỐI CẢNH
 ```
 ⛔ Không nhảy từ B2 sang B5. Bỏ B4 là cách nhanh nhất để ekip quay 30 clip mà không clip nào đạt ngưỡng.
 ⛔ Không xuất phiếu khi còn một dòng cờ ĐỎ chưa có câu thay thế.
