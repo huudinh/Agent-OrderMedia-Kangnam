@@ -1,12 +1,29 @@
 # 🎬 AGENT-ORDERMEDIA-KANGNAM — Từ order thành phiếu quay
 
-> Version 1.0 · AI nhận **một file order nội dung** (sheet/excel: hook, CTA, chân dung, nấc 5A) → chấm hook theo **công thức rút từ 91 ad thật đã chấm** → xuất **phiếu kịch bản sản xuất 42 trường** + **call sheet gom theo bối cảnh** + **bảng cờ pháp chế có câu thay thế**.
+> Version 1.2 · AI nhận **một file order nội dung** (sheet/excel: hook, CTA, chân dung, nấc 5A) → chấm hook theo **công thức rút từ 91 ad thật đã chấm** → xuất **phiếu kịch bản sản xuất 42 trường** + **call sheet gom theo bối cảnh** + **bảng cờ pháp chế có câu thay thế**.
 >
 > ⛔ **Dịch order thành phiếu quay được — KHÔNG sáng tác tự do.** Agent gắn cờ và đề xuất; bác sĩ kiểm duyệt và pháp chế ký; ekip bấm máy.
 
 Kiến trúc **BRAIN brand-neutral** ([`SYSTEM-PROMPT.md`](SYSTEM-PROMPT.md)) + **module đơn vị tách riêng** ([`knowledge/om-H-dich-vu-kangnam.md`](knowledge/om-H-dich-vu-kangnam.md)) → đổi đơn vị hoặc đổi dịch vụ chỉ cần thay module đó.
 
 **Phục vụ:** khối Content & Media — Bệnh viện Thẩm mỹ Kangnam.
+
+---
+
+## 📘 Hướng dẫn sử dụng
+
+> ### → **[Mở trang hướng dẫn](https://claude.ai/artifact/1A4tfwpJZSPKJ4g8mq3omG)**
+>
+> | Mục | Có gì ở đó |
+> |---|---|
+> | **① Cài đặt** | Tên & mô tả dán sẵn · tab Claude/ChatGPT/Gemini · 3 thẻ copy bộ não · 16 file tri thức copy được từng file · **smoke test 12 câu** |
+> | **② Prompt mẫu** | 31 prompt lọc theo nhóm: ★ AUTO một câu ngắn · đọc order · ★ soi hook · kịch bản · ⛔ pháp chế · lấp lỗ hổng · dòng lệnh |
+> | **③ Năm điều phải biết** | **hook kể tình trạng, không kể tính từ** · **hai tầng đầu ra** · khuôn là của nhà · **cổng pháp chế không nới** · hai chỗ agent sai tự tin nhất |
+> | **④ Việc đang chặn** | 6 mục 🔴🟠🟡 — ai cấp, chặn gì |
+>
+> Trang sinh thẳng từ nội dung repo bằng `python tools/trang-huong-dan.py`, nên **nút Copy luôn khớp file nguồn**.
+
+**Người mới bắt đầu từ trang đó, không phải từ đây.**
 
 ---
 
@@ -31,16 +48,20 @@ Kiến trúc **BRAIN brand-neutral** ([`SYSTEM-PROMPT.md`](SYSTEM-PROMPT.md)) + 
 ## Vào gì — ra gì
 
 ```
-ĐẦU VÀO                          ĐẦU RA
-file order 17 cột          →      ① phiếu kịch bản 42 trường / 6 khối
-(hook · CTA · chân dung           ② call sheet gom theo BỐI CẢNH
- · nấc 5A · camp đích · …)        ③ bảng chấm hook ✓ / ⚠ / ✗
-                                  ④ bảng cờ pháp chế + CÂU THAY THẾ
-                                  ⑤ khối GIẢ ĐỊNH
-                                  ⑥ khối [CHỜ XÁC NHẬN] — ai cấp, chặn gì
+ĐẦU VÀO                          ĐẦU RA — HAI TẦNG
+file order 17 cột          →      ★ TẦNG 1 · PHIẾU ORDER   1 dòng = 1 clip
+(hook · CTA · chân dung                 42 trường, 6 khối — cho quản lý & điều phối
+ · nấc 5A · camp đích · …)        ★ TẦNG 2 · KỊCH BẢN      1 dòng = 1 NHỊP
+                                        khuôn nhà — cho editor & DOP
+                                  ③ call sheet gom theo BỐI CẢNH
+                                  ④ bảng chấm hook ✓ / ⚠ / ✗
+                                  ⑤ bảng cờ pháp chế + CÂU THAY THẾ
+                                  ⑥ khối GIẢ ĐỊNH + [CHỜ XÁC NHẬN]
 ```
 
-**Người order điền 5 ô. Agent điền 27 ô còn lại.** Mọi ô agent suy ra đều in kèm `(suy ra)`.
+**Người order điền 5 ô. Agent điền 37 ô còn lại.** Mọi ô agent suy ra đều in kèm `(suy ra)`.
+
+⛔ **Hai tầng không trộn vào một bảng.** Một clip `L03` có 20–25 nhịp — nhét vào một ô là bảng không ai đọc được. Chi tiết [`om-I`](knowledge/om-I-khuon-kich-ban-nha.md) §1.
 
 ---
 
@@ -52,7 +73,7 @@ Copy toàn bộ khối giữa hai vạch ▼▲ trong [`SYSTEM-PROMPT.md`](SYSTE
 - **ChatGPT Custom GPT** → ô *Instructions* (⚠️ giới hạn 8.000 ký tự → dùng [`SYSTEM-PROMPT-NGAN.md`](SYSTEM-PROMPT-NGAN.md))
 - **Gemini Gem** → ô *Chỉ dẫn*
 
-Rồi nạp **8 file `knowledge/` + 6 file `prompts/`** vào phần *Knowledge / Tri thức*.
+Rồi nạp **10 file `knowledge/` + 6 file `prompts/`** vào phần *Knowledge / Tri thức*.
 Nền tảng chỉ cho nạp ít file → dùng bản gộp [`goi/GOP-tri-thuc.md`](goi/GOP-tri-thuc.md).
 
 ### 2. Gõ một câu
@@ -88,18 +109,20 @@ B7 XUẤT PHIẾU       → bảng 42 trường + call sheet gom theo BỐI CẢ
 
 ---
 
-## Tám sổ tri thức
+## Mười sổ tri thức
 
 | Sổ | Nội dung |
 |---|---|
 | [`om-A`](knowledge/om-A-vai-tro-quy-trinh.md) | Vai trò · 7 bước · hai cổng · ★ chế độ AUTO · ba loại yêu cầu |
 | [`om-B`](knowledge/om-B-doc-dau-vao.md) | 17 cột order · chuẩn hoá chân dung · ★ 10 ô agent tự suy ra · 7 loại hook |
-| [`om-C`](knowledge/om-C-tri-thuc-khach-hang.md) | ★ 6 chân dung CD1–CD6 · 5A · **công thức hook thắng/thua từ 91 ad thật** |
+| [`om-C`](knowledge/om-C-tri-thuc-khach-hang.md) | Chân dung **MŨI** · 5A · ★ **công thức hook thắng/thua từ 91 ad thật** *(dùng cho mọi dịch vụ)* |
 | [`om-D`](knowledge/om-D-thu-vien-format.md) | Thư viện format L01–L16 · cấu trúc theo giây · đạo cụ · bối cảnh · dòng batch |
 | [`om-E`](knowledge/om-E-kich-ban-san-xuat.md) | 4 khối lời thoại · shot list · ★ 42 trường đầu ra · call sheet · tái dựng |
 | [`om-F`](knowledge/om-F-to-chuc-ads.md) | Ô V1–V5/P1–P5 · kho tệp vào/loại trừ · ngưỡng TỐT/KÉM · nhịp vận hành |
 | [`om-G`](knowledge/om-G-phap-che-ranh-gioi.md) | ⛔ 12 điểm L01–L12 · cờ 🟢🟡🔴 · câu thay thế mẫu · mẫu trả lời bình luận |
-| [`om-H`](knowledge/om-H-dich-vu-kangnam.md) | **Module đơn vị** — chi nhánh · giấy phép · menu dịch vụ · trạng thái xác minh BS |
+| [`om-H`](knowledge/om-H-dich-vu-kangnam.md) | **Module đơn vị** — chi nhánh · giấy phép · menu dịch vụ · bảng giá · trạng thái xác minh BS |
+| [`om-I`](knowledge/om-I-khuon-kich-ban-nha.md) | ★ **Khuôn kịch bản thật của nhà** — hai tầng đầu ra · khuôn cột · thuật ngữ dựng · quy định text |
+| [`om-J`](knowledge/om-J-chan-dung-mat.md) | Chân dung **MẮT** — ⚠️ đọc §0 trước: phần lớn suy ra, chưa có sheet chính thức |
 
 ---
 
@@ -126,19 +149,20 @@ B7 XUẤT PHIẾU       → bảng 42 trường + call sheet gom theo BỐI CẢ
 
 ---
 
-## ⚠️ Việc đang chặn — năm thứ cần xin
+## ⚠️ Việc đang chặn — sáu thứ cần xin
 
-Agent in năm dòng này vào khối `[CHỜ XÁC NHẬN]` mỗi lần xuất phiếu, cho tới khi được cấp:
+Agent in sáu dòng này vào khối `[CHỜ XÁC NHẬN]` mỗi lần xuất phiếu, cho tới khi được cấp:
 
 | # | Cần | Ai cấp | Đang chặn |
 |---|---|---|---|
-| 🔴 ① | **Danh sách BS đã xác minh** (tên · số CCHN · phạm vi chuyên môn · cơ sở hành nghề · văn bản đồng ý dùng hình ảnh) | Vận hành + pháp chế | Mọi phiếu có tên bác sĩ |
-| 🔴 ② | **Bảng giá trọn gói hiện hành** + quyền lợi từng gói | Vận hành / sales | Mọi phiếu `L11` + mọi hook nấc `A4` |
-| 🔴 ③ | **Chính sách bảo hành bằng văn bản** — thời hạn thật | Pháp chế | ⚠️ Dữ liệu hiện có ghi cả *"trọn đời"* và *"10 năm"* → chắc chắn một cái sai |
+| 🔴 ① | **Chính sách bảo hành bằng văn bản** — thời hạn thật | Pháp chế | ⚠️ **Cấp bách nhất.** Ba mức đang cùng chạy trên ads: *"3 năm"* (kịch bản mắt) · *"10 năm"* (CD3 mũi) · *"trọn đời"* (nhiều hook mũi) |
+| 🔴 ② | **Danh sách BS đã xác minh** (tên · số CCHN · phạm vi chuyên môn · cơ sở hành nghề · văn bản đồng ý dùng hình ảnh) | Vận hành + pháp chế | Mọi phiếu có tên bác sĩ — kịch bản thật đang nêu *"Dr. Mard Nguyen"*, *"Dr. Hải"* |
+| 🔴 ③ | **Bảng giá hiện hành các dịch vụ ngoài mắt** | Vận hành / sales | Phiếu `L11` + hook `A4` của mũi & dịch vụ khác. *(Mắt đã có số nháp — xem `om-H` §6a)* |
 | 🔴 ④ | **Số giấy phép hoạt động đủ 7 cơ sở** (hiện chỉ có 2: HN `194/BYT-GPHĐ` · SG `287/BYT-GPHĐ`) | Pháp chế | Mọi phiếu local `L12` ngoài hai bệnh viện |
 | 🟡 ⑤ | **Định nghĩa format `L13` `L14` `L15` `L16`** | Content Lead | Các ô `V3`/`P3`/`V4`/`P4`/`V5` đang trỏ tới format chưa định nghĩa |
+| 🟡 ⑥ | **Kịch bản mẫu cho `L01`** | Content Lead | `L01` là format xương sống nhưng ô link trong mục lục đang trống |
 
-> ⚠️ Mục ⑤ là lỗi dữ liệu thật đã phát hiện khi dựng agent: **kế hoạch Ads dùng `L13`–`L15`, nhưng thư viện Format chỉ định nghĩa tới `L12`.**
+> ⚠️ Mục ⑤ là lỗi dữ liệu thật phát hiện khi dựng agent: **kế hoạch Ads dùng `L13`–`L15`, nhưng thư viện Format chỉ định nghĩa tới `L12`.**
 
 ---
 
@@ -174,11 +198,13 @@ Từ ma trận chân dung × 5A của pilot mũi (34 content đang giữ):
 Agent-OrderMedia-Kangnam/
 ├── SYSTEM-PROMPT.md          ★ bộ não — copy vào nền tảng AI
 ├── SYSTEM-PROMPT-NGAN.md       bản <8.000 ký tự cho ChatGPT
-├── knowledge/                  8 sổ om-A … om-H
+├── knowledge/                 10 sổ om-A … om-J
 ├── prompts/                    6 prompt mẫu
 ├── goi/GOP-tri-thuc.md         bản gộp (sinh tự động)
 ├── tools/om.py               ★ đọc order · chuẩn hoá · cổng A · chấm sơ bộ
 ├── tools/gop-tham-khao.py      gộp lại knowledge/
+├── tools/dem-ngan.py           đếm ký tự bản ngắn (🔴 đang còn 13)
+├── tools/trang-huong-dan.py    sinh trang hướng dẫn (nội dung ở huong-dan.json)
 ├── doc/                        cài đặt · dòng lệnh · CHANGELOG
 └── out/                        phiếu xuất ra (gitignored)
 ```

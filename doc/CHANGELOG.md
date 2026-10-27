@@ -2,6 +2,136 @@
 
 ---
 
+## v1.2.1 — 2026-10-27
+
+Thêm **trang hướng dẫn** dạng artifact, theo đúng khuôn dùng chung của bộ agent.
+
+| Thành phần | Nội dung |
+|---|---|
+| `tools/trang-huong-dan.py` | Copy generator dùng chung từ `Agent-QC-Telesale` · **thêm `<meta name="viewport">`** |
+| `tools/huong-dan.json` | Nội dung trang: 3 thẻ · 16 file · 31 prompt · 12 câu smoke · 5 điều phải biết · 6 mục chặn |
+| `README.md` | Khối *"📘 Hướng dẫn sử dụng"* + link artifact |
+| `.gitignore` | ⛔ `tools/huong-dan.html` — artifact sinh ra, không phải nguồn |
+
+**Trang:** https://claude.ai/artifact/1A4tfwpJZSPKJ4g8mq3omG
+
+### ⚠️ Sửa một lỗi của generator dùng chung
+
+Generator gốc *(đang dùng ở `Agent-QC-Telesale`, `Agent-Order-SoLieu`…)* **không phát `<meta name="viewport">`** → trang bị thu nhỏ trên điện thoại, chữ không đọc được mà không zoom. Bản trong repo này đã thêm.
+→ **Nên đồng bộ sang các agent khác** — lỗi này ảnh hưởng mọi trang hướng dẫn đã publish.
+
+### Vì sao nút Copy không bao giờ lệch
+
+Generator **đọc thẳng file nguồn** *(bộ não, 10 sổ, 6 prompt)* để nhúng vào nút Copy, chỉ lấy câu chữ từ JSON. Sửa `knowledge/` thì chạy lại generator là nút Copy tự đúng — ⛔ không phải sửa JSON theo.
+
+---
+
+## v1.2 — 2026-10-27
+
+Mở **chuyên khoa thứ hai: MẮT**.
+
+### Dựng mới
+
+| Thành phần | Nội dung |
+|---|---|
+| `knowledge/om-J-chan-dung-mat.md` | 6 chân dung mắt · 5A mắt · ★ từ vựng tình trạng mắt · dịch vụ & giá · lỗ hổng phễu mắt |
+| `om-C` header | Khoanh phạm vi: §1–§4 là **mũi**; §5–§6 *(công thức hook)* dùng cho **mọi dịch vụ** |
+| `SYSTEM-PROMPT` §9b | Luật chọn module theo dịch vụ + nói rõ độ tin cậy |
+| `tools/om.py` | Định tuyến chân dung theo dịch vụ · sửa ánh xạ `sụp mí`/`lão hoá` · cảnh báo `CD5` lệch + bệnh nền |
+
+### ⚠️ Sửa một lỗi ánh xạ của v1.0
+
+```
+v1.0 :  "sụp mí"  → CD1      "lão hóa" → CD1      ← SAI, gộp ba tệp khác nhau vào một mã
+v1.2 :  "sụp mí"  → CD6      "lão hóa" → CD5
+```
+Sụp mí là **bệnh lý ảnh hưởng chức năng** → thuộc `CD6`. Lão hoá là tệp riêng với nỗi sợ riêng *(tuổi cao, bệnh nền)*.
+
+### ⚠️ Một chỗ LỆCH quy ước — cần khối Ads chốt
+
+```
+Mũi : CD5 = Phong thuỷ / tướng số
+Mắt : không có dữ liệu phong thuỷ, nhưng order có tệp "Mắt - Lão hóa" rất rõ
+→ Agent tạm xếp CD5 mắt = Lão hoá, và IN CẢNH BÁO mỗi lần xuất phiếu CD5 mắt.
+```
+Hệ quả nếu để lệch: báo cáo so `CD5` giữa mũi và mắt sẽ so **hai tệp khác hẳn nhau**. Ba hướng xử ở `om-J` §1 — ⛔ agent không tự chuyển hướng khi chưa được chốt.
+
+### Phát hiện về chuyên khoa mắt
+
+| Phát hiện | Ý nghĩa |
+|---|---|
+| ★ **Nỗi sợ `A3` của mắt khác mũi**: mắt = **chi phí phát sinh**; mũi = *"không ai chịu trách nhiệm"* | Hook `A3` mắt nên mở bằng **giá trọn gói**; mũi mở bằng **bảo hành** |
+| **`CD3` mắt là tệp có hook mạnh nhất** — kịch bản `L03` có 4 hook sẵn *("tại sao cắt mí rồi mắt vẫn chưa đẹp", "có nếp mí rõ mà mắt vẫn nhỏ")* — nhưng order **chưa có dòng nào** | Lỗ hổng đáng lấp nhất của mắt |
+| **`CD4` mắt đã có case quay xong** *("Đàn ông không có quyền làm đẹp?")* nhưng order chưa có dòng | Chỉ cần dựng, không cần quay mới |
+| ★ **Insight đắt nhất của `CD3` mắt:** vấn đề thường **không ở nếp mí** mà ở tương quan cung mày · hốc mắt sâu · góc mắt · da chùng | Nhóm này muốn **lời giải thích** trước khi muốn dịch vụ |
+| **`CD5` mắt có nỗi sợ không nhóm nào khác có:** *"bệnh huyết áp/tiểu đường nhẹ có cắt mí được không?"* | 🔴 Câu về bệnh nền **phải do BS duyệt** |
+| **Lát cắt SINH VIÊN** trong `CD1` — có kịch bản riêng, giọng tự trào, thời điểm **nghỉ hè**, trigger trả góp | Không phải chân dung riêng, là lát cắt theo ngân sách |
+| ⚠️ **Order mắt chưa dòng nào có cột `HIỆU QUẢ`** | Công thức hook `om-C` §5 rút từ **91 ad mũi** → áp sang mắt là **suy luận, chưa phải bằng chứng**. Agent phải nói rõ điều này |
+
+### 🔴 Bản ngắn đã ĐẦY
+
+`SYSTEM-PROMPT-NGAN` 7.523 → **7.987 / 8.000 ký tự — còn 13.**
+→ Thêm dòng nào cũng phải **cắt một dòng khác**. Nếu cần thêm nhiều: bỏ bớt mục khỏi bản ngắn, để agent tra trong `knowledge/` — bản ngắn chỉ nên giữ **luật chặn** và **con trỏ sang sổ**.
+
+`goi/GOP-tri-thuc.md` 118,8 → **137,4 KB** · 10 sổ.
+
+---
+
+## v1.1 — 2026-10-27
+
+Nạp **thư viện kịch bản thật** của khối (mục lục `1g4ti7tIY0...`, 11 kịch bản chuyên khoa mắt + sheet *Quy định text*).
+
+### Dựng mới
+
+| Thành phần | Nội dung |
+|---|---|
+| `knowledge/om-I-khuon-kich-ban-nha.md` | ★ Khuôn kịch bản thật — hai tầng đầu ra · khuôn cột theo format · thuật ngữ dựng · quy định text · nguồn footage · dòng THUMB · khối TỐI ƯU MIỀN TÂY · đối chiếu cổng B |
+| `om-D` §7 | Mục lục kịch bản mẫu theo format + cảnh báo mượn khuôn ≠ mượn nội dung |
+| `om-H` §6a–6b | **Bảng giá mắt thật** + phát hiện ba mức bảo hành xung đột |
+| `om-H` §7 | Bốn quyền lợi riêng cho tệp Việt kiều |
+| `SYSTEM-PROMPT` §8b | Hai tầng đầu ra · khuôn nhà · thuật ngữ · quy định text |
+
+### ★ Quyết định thiết kế lớn nhất: đầu ra có HAI TẦNG
+
+Bản v1.0 thiết kế đầu ra là **một bảng phẳng 42 trường, 1 dòng = 1 clip**. Đọc kịch bản thật mới thấy nhà đang làm khác: **1 dòng = 1 NHỊP**, mỗi clip là một sheet riêng, một clip `L03` có 20–25 nhịp.
+
+→ Hai cái **không thay thế nhau, mà bổ sung**:
+
+```
+TẦNG 1  PHIẾU ORDER        1 dòng = 1 clip · 42 trường   → quản lý & điều phối
+TẦNG 2  KỊCH BẢN CHI TIẾT  1 dòng = 1 NHỊP · khuôn nhà   → editor & DOP
+```
+
+Trường `LỜI THOẠI THEO MỐC GIÂY` ở tầng 1 trở thành **con trỏ** sang sheet tầng 2, không phải chỗ nhét cả 25 nhịp.
+
+### Khuôn nhà đã rút được
+
+- **Lõi chung 4 cột:** `STT · VOICE/NỘI DUNG · TEXT · FOOTAGE/FT`, biến thể thêm `THIẾT KẾ` · `NOTE` · `FIX`
+- **Thuật ngữ dựng:** `trám full` · `trám cận` · `chia đôi, trám hình trên, bsi nói ở dưới` · `cho bác sĩ xuống góc` · `tách nền bác sĩ` · `khung box comment` · `Text nền FT` · `biến đổi trc sau` · `ra beauty` · `multi pic`
+- **Quy định text cứng:** Roboto · `#114D8F` / `#ef6103` / trắng-đen · viền 20/30 · cỡ 15 · subtext `X:0 Y:-1050` · tool khung câu hỏi TikTok `65%, X:-200 Y:-840` · ⛔ **không dùng khung, không thiết kế**
+- **Dòng `THUMB` bắt buộc**, text ≤2 dòng in hoa
+- **Khối `TỐI ƯU MIỀN TÂY`** — viết lại giọng miền, giữ nguyên footage
+- **Cột `FIX`** là vòng feedback của người duyệt → ⛔ agent để trống
+- **Voice AI** cho câu hỏi; lời bác sĩ/khách giữ tiếng thật, cắt theo mốc giây
+
+### ⚠️ Phát hiện mới
+
+| Phát hiện | Xử lý |
+|---|---|
+| **Bảo hành có BA mức đang cùng chạy:** *3 năm* (kịch bản `L11` mắt) · *10 năm* (CD3 mũi) · *trọn đời* (hook mũi) | `om-H` §6b — mắt dùng `3 năm` kèm cảnh báo; mũi ⛔ không dùng số nào. Đẩy lên **chặn số ① cấp bách nhất** |
+| **Có bảng giá mắt thật**: Plasma 8tr · 6D 12,8tr · +tạo khoé 13,6tr · +cấy mỡ 17,9tr · nâng cung mày 8,8tr | `om-H` §6a — mở một phần chặn giá, vẫn phải đối chiếu bản chính thức |
+| ★ **Kịch bản thật đang chứa nhiều câu mà cổng B gắn cờ**: *"Không đau - Không sưng bầm"* làm text thương hiệu · *"VÔ KHUẨN 100%"* · *"Đường sẹo tàng hình"* · *"7 NGÀY LÀ ĐẸP"* · *"15+ năm kinh nghiệm, 20.000+ khách hàng"* · tên BS chưa xác minh | `om-I` §9 — agent **vẫn chấm cờ cho clip mới**, nêu kèm dẫn chứng, ⛔ không tự sửa kho cũ. Rà kho cũ là quyết định của khối + pháp chế |
+| **`L01` chưa có kịch bản mẫu** — ô link trong mục lục trống, dù đây là format xương sống | `om-D` §7 — dùng khuôn `L03` rút gọn, ghi rõ là khuôn mượn. Thêm vào chặn ⑥ |
+| **Kịch bản mẫu toàn bộ là chuyên khoa MẮT** | `om-D` §7 — mượn **khuôn**, ⛔ không mượn nội dung y khoa và con số |
+| **Bốn quyền lợi Việt kiều** chưa được hook mũi khai thác: giấy xác nhận phẫu thuật · hỗ trợ hải quan · đưa đón sân bay · tư vấn online | `om-H` §7 — lỗ hổng đáng lấp, **sạch pháp chế** vì là quyền lợi dịch vụ |
+
+### Số liệu
+
+`SYSTEM-PROMPT-NGAN` 6.072 → **7.523 ký tự** *(giới hạn 8.000, còn 477)*.
+`goi/GOP-tri-thuc.md` 99,6 KB → **118,8 KB** · 9 sổ.
+
+---
+
 ## v1.0 — 2026-10-27
 
 Bản đầu. Dựng từ sáu nguồn tri thức thật của khối Ads/Content Kangnam + tri thức sản xuất media có sẵn trong project.
@@ -78,11 +208,14 @@ Bốn cờ 🔴 đều là vi phạm thật trong order: *"đẹp ngay sau 60 ph
 
 ---
 
-## Dự kiến v1.1
+## Dự kiến v1.3
 
-- [ ] Mở các chặn khi được cấp 5 thứ ở `om-H` §8
-- [ ] Bổ sung `om-C` cho chuyên khoa **mắt** *(order đã có dòng mắt: sụp mí, lão hoá, khuyết điểm)*
-- [ ] Định nghĩa `L13`–`L16` sau khi Content Lead chốt
+- [ ] **Chốt chính sách bảo hành** — chặn cấp bách nhất, ba mức đang cùng chạy trên ads
+- [ ] **Chốt hướng xử `CD5` mắt** — `om-J` §1, ba hướng A/B/C
+- [ ] **Xin sheet chân dung mắt chính thức** + chấm `HIỆU QUẢ` cho ad mắt → `om-J` §0
+- [ ] Mở các chặn còn lại khi được cấp 6 thứ ở `om-H` §8
+- [ ] Định nghĩa `L13`–`L16` + kịch bản mẫu `L01`
 - [ ] Thay ngưỡng giả định ở `om-F` §3 bằng số thật 3 tháng
+- [ ] Thêm `tools/kich-ban.py` — sinh khung kịch bản tầng 2 đúng khuôn cột theo từng format
 - [ ] Thêm `tools/call-sheet.py` — gom phiếu thành call sheet, tính giờ và số lần đổi set
 - [ ] Nối ngược với `Agent-AdsReport-Kangnam` để tự nạp cột `HIỆU QUẢ` sau mỗi kỳ

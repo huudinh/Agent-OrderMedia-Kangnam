@@ -1,6 +1,12 @@
 # om-E · VIẾT KỊCH BẢN & ĐẦU RA
 
 > Sổ này trả lời: **lời thoại viết thế nào, shot list ghi thế nào, bảng đầu ra có cột gì, và call sheet xếp ra sao.**
+>
+> ★ **ĐỌC `om-I` TRƯỚC SỔ NÀY.** Đầu ra có **hai tầng**:
+> `TẦNG 1` **phiếu order** — 1 dòng = 1 clip, 42 trường (§4 sổ này), cho quản lý & điều phối.
+> `TẦNG 2` **kịch bản chi tiết** — 1 dòng = 1 nhịp, theo **khuôn nhà** (`om-I` §2), cho editor & DOP.
+> ⛔ Không gộp hai tầng vào một bảng. Trường `LỜI THOẠI THEO MỐC GIÂY` ở §4 là **con trỏ** sang sheet kịch bản tầng 2, không phải chỗ nhét cả 25 nhịp.
+> §1–§3 dưới đây là **luật viết nội dung**; **khuôn trình bày** theo `om-I`.
 
 ---
 

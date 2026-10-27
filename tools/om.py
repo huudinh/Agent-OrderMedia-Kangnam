@@ -34,8 +34,9 @@ CHAN_DUNG = {
     "nam gioi": ("CD4", "Nam gioi"),
     "phong thuy": ("CD5", "Phong thuy"),
     "kho benh ly": ("CD6", "Kho, benh ly"),
-    "sup mi": ("CD1", "Khuyet diem"),
-    "lao hoa": ("CD1", "Khuyet diem"),
+    # om-J §1 — chuyen khoa MAT: sup mi la benh ly -> CD6; lao hoa -> CD5 (MA DANG LECH)
+    "sup mi": ("CD6", "Sup mi & benh ly"),
+    "lao hoa": ("CD5", "Lao hoa"),
 }
 
 # om-B §3 — nac 5A -> nhiet
@@ -149,6 +150,31 @@ CHAN_DUNG_TRI_THUC = {
             "Doi dang mui - mo cung tai: chuan nhan tuong"),
     "CD6": ("So phau thuat that bai (lon nhat); so bien chung anh huong chuc nang tho",
             "Tai sinh dang mui - chua lanh moi khuyet diem, tra lai tu nhien"),
+}
+
+# om-J §2 — chan dung MAT (phan lon la SUY RA, xem om-J §0)
+CHAN_DUNG_MAT = {
+    "CD1": ("SO CHI PHI PHAT SINH (noi so so 1); so seo goc mat trong; so sung lau nghi lam",
+            "Cat mi dung tinh trang - nep mi ro net, hoi phuc nhanh, gia tron goi khong phat sinh"),
+    "CD2": ("So mat len hinh thay nep nhan; so sung lo job; so lam xong mat nhan dien",
+            "Mat khong gia di theo nghe"),
+    "CD3": ("So sua nua van khong dep; so da tieu tien vo ich; so khong ai chi ra van de that",
+            "Cat mi don thuan khong giai quyet tat ca - bac si chi ra van de that cua ban"),
+    "CD4": ("SO BI DANH GIA VI DI THAM MY; so mat net nam tinh",
+            "Mat co hon, tam nhin thoang hon - khong ai biet da lam"),
+    "CD5": ("SO NGUY HIEM VI TUOI CAO, BENH NEN; so hoi phuc lau",
+            "Trong tuoi hon, do met moi - khong phai tre nhu gai 20"),
+    "CD6": ("So khong sua duoc; so anh huong chuc nang mat; so hai ben van khong deu",
+            "Mat mo binh thuong, hai ben deu"),
+}
+
+# om-J §3 — CTA chuan cua nac, chuyen khoa MAT
+CTA_NAC_MAT = {
+    "A1": "Xem mat ban thuoc kieu nao",
+    "A2": "Gui anh mat - bac si chi ra ban can chinh gi",
+    "A3": "Inbox nhan bao gia theo tinh trang",
+    "A4": "Inbox giu suat / giu lich",
+    "A5": "Luu video - nhan neu can ho tro hau phau",
 }
 
 # om-C §3 — CTA chuan cua nac
@@ -438,7 +464,19 @@ def xu_ly(r: dict[str, str], stt: int, nhan_khoi: str, dong_goc: int) -> dict[st
     nhan_vat = NHAN_VAT.get(fmt, "")
     tep_vao, tep_tru = TEP.get(o, ("", ""))
     nguong_tot, ket_qua = NGUONG.get(o, ("", ""))
-    noi_so, td_thang = CHAN_DUNG_TRI_THUC.get(cd_ma, ("", ""))
+
+    # Chon module chan dung theo dich vu: MAT -> om-J, con lai -> om-C (mui)
+    la_mat = "mat" in bo_dau(r.get("chan_dung", ""))
+    if la_mat:
+        noi_so, td_thang = CHAN_DUNG_MAT.get(cd_ma, ("", ""))
+        cta_mac_dinh = CTA_NAC_MAT.get(nac, "")
+        if cd_ma == "CD5":
+            canh_bao.append("CD5 MAT DANG LECH khoi quy uoc (mui=phong thuy) - om-J §1")
+        if cd_ma in ("CD5", "CD6"):
+            canh_bao.append("Cau ve BENH NEN / SUP MI phai do BS duyet - om-J §2")
+    else:
+        noi_so, td_thang = CHAN_DUNG_TRI_THUC.get(cd_ma, ("", ""))
+        cta_mac_dinh = CTA_NAC.get(nac, "")
 
     # cong A
     cong_a = {
@@ -492,7 +530,7 @@ def xu_ly(r: dict[str, str], stt: int, nhan_khoi: str, dong_goc: int) -> dict[st
         "HOOK 0-3s": hook,
         "HOOK GOC -> DE XUAT -> VI SAO": ("<< B4 — agent dien neu doi hook >>"
                                           if cham.startswith(("X", "!")) else ""),
-        "CTA": cta or (suy_ra(CTA_NAC.get(nac, "")) if nac else ""),
+        "CTA": cta or (suy_ra(cta_mac_dinh) if cta_mac_dinh else ""),
         "LOI THOAI THEO MOC GIAY": "<< B5 — agent viet >>",
         "TEXT ON SCREEN": "<< B5 — agent viet >>",
         "SHOT LIST + B-ROLL": "<< B5 — agent viet >>",

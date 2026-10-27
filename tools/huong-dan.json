@@ -1,0 +1,551 @@
+{
+  "ma": "ordermedia",
+  "title": "Order Media Kangnam — Từ order thành phiếu quay",
+  "h1": "Từ một dòng order thành một phiếu quay được",
+  "eyebrow": "Hướng dẫn cài đặt & prompt mẫu",
+  "ten_agent": "Agent-OrderMedia-Kangnam",
+  "repo": "https://github.com/huudinh/Agent-OrderMedia-Kangnam",
+  "buoc2": "<b>Thẻ A</b> vào ô chỉ dẫn",
+  "brain": "SYSTEM-PROMPT.md",
+  "brain_ngan": "SYSTEM-PROMPT-NGAN.md",
+
+  "mo_ta_agent": "Nhận file order nội dung (sheet/excel: hook, CTA, chân dung, nấc 5A) → chấm hook theo công thức rút từ 91 ad thật đã chấm → xuất phiếu kịch bản sản xuất 42 trường, kịch bản chi tiết theo khuôn nhà, call sheet gom theo bối cảnh, và bảng cờ pháp chế kèm câu thay thế. Dịch order thành phiếu quay được — không sáng tác tự do.",
+
+  "lede": "Đọc order → chấm hook theo <b>công thức rút từ 91 ad thật</b> → ra <b>phiếu quay được</b>: lời thoại có mốc giây, bối cảnh, đạo cụ, cờ pháp chế. Cài xong trong <b>~15 phút</b>.",
+
+  "quick": "Dán <b>link sheet order</b> <span class=\"ar\">&rarr;</span> agent <b>chấm hook</b> trước <span class=\"ar\">&rarr;</span> <b>phiếu 42 trường</b> + <b>kịch bản theo khuôn nhà</b> + <b>call sheet</b><br><span class=\"dim\">Người order điền 5 ô. Agent điền 37 ô còn lại — mọi ô suy ra đều ghi <code>(suy ra)</code>.</span>",
+
+  "dim": "Nguyên tắc tối thượng: <b>hook kể TÌNH TRẠNG thì khách nhận ra mình, hook kể TÍNH TỪ thì khách lướt qua.</b> Đây không phải quan điểm — đây là kết luận từ 91 ad đã chấm. Vì vậy agent chấm hook <b>trước</b> khi viết kịch bản.",
+
+  "chips": [
+    "v1.2",
+    "10 sổ tri thức",
+    "7 bước · 2 cổng",
+    "★ công thức hook từ 91 ad thật",
+    "★ 2 tầng đầu ra",
+    "khuôn kịch bản nhà",
+    "Claude · ChatGPT · Gemini"
+  ],
+
+  "muc": ["Cài đặt", "Prompt mẫu", "Năm điều phải biết", "Việc đang chặn"],
+
+  "cai_dat_intro": "Agent là <b>prompt + tri thức</b>, không phải phần mềm. Ba script <code>tools/</code> chỉ cần Python — <code>om.py</code> đọc order và chạy cổng A bằng máy, <code>gop-tham-khao.py</code> gộp tri thức, <code>dem-ngan.py</code> canh giới hạn 8.000 ký tự của ChatGPT.",
+
+  "dl_mo_ta": "Toàn bộ repo: bộ não đầy đủ và bản ngắn · 10 sổ tri thức · 6 prompt mẫu · 3 công cụ dòng lệnh.",
+
+  "cau_mo_dau": [
+    "ra kịch bản sản xuất cho order này <link sheet>",
+    "soi hook trong file này, đừng viết kịch bản",
+    "chỉ soát pháp chế thôi",
+    "chân dung nào đang thiếu content?"
+  ],
+
+  "tabs": [
+    {
+      "ten": "Claude Project",
+      "tieu_de": "Claude Project — khuyến nghị",
+      "mo_ta": "Ô instructions không giới hạn ký tự nên dùng được bộ não đầy đủ. Agent này phải giữ nhiều ngữ cảnh cùng lúc (file order + 6 chân dung + thư viện format + 12 điểm pháp chế), nên cửa sổ rộng là lợi thế thật.",
+      "buoc": [
+        "<b>Projects</b> &rarr; <b>Create project</b>, tên và mô tả lấy ở khối phía trên.",
+        "<b>Custom instructions</b> &rarr; dán <b>Thẻ A &middot; Bộ não</b>.",
+        "<b>Add content</b> &rarr; upload <b>đủ 16 file</b> ở khối dưới.",
+        "Mở chat mới &rarr; chạy <b>12 câu smoke test</b>. Sai câu nào thì thiếu file tương ứng."
+      ]
+    },
+    {
+      "ten": "ChatGPT Custom GPT",
+      "tieu_de": "ChatGPT Custom GPT — nhớ giới hạn 8.000 ký tự",
+      "mo_ta": "Ô Instructions bị cắt ở 8.000 ký tự và <b>không báo lỗi</b>. Phải dùng Thẻ B (bản ngắn), không dùng Thẻ A — nếu dán bản đầy đủ thì phần bị cắt chính là mấy mục cuối, tức là luật chặn và bảng tự kiểm.",
+      "buoc": [
+        "<b>Explore GPTs</b> &rarr; <b>Create</b>, tên và mô tả lấy ở khối phía trên.",
+        "<b>Instructions</b> &rarr; dán <b>Thẻ B &middot; Bản ngắn</b>. ⛔ Không dán Thẻ A.",
+        "<b>Knowledge</b> &rarr; upload <b>16 file</b>; nếu bị chặn số file thì upload <b>Thẻ C</b> (một file gộp).",
+        "Chạy <b>12 câu smoke test</b>. Thiếu luật chặn ở cuối &rarr; kiểm lại xem Instructions có bị cắt không."
+      ]
+    },
+    {
+      "ten": "Gemini Gems",
+      "tieu_de": "Gemini Gems",
+      "mo_ta": "Dùng được bộ não đầy đủ. Phần Kiến thức giới hạn số file nên thường tiện nhất là nạp Thẻ C (bản gộp 10 sổ) rồi thêm 6 prompt mẫu.",
+      "buoc": [
+        "<b>Gem manager</b> &rarr; <b>New Gem</b>, tên và mô tả lấy ở khối phía trên.",
+        "<b>Chỉ dẫn</b> &rarr; dán <b>Thẻ A &middot; Bộ não</b>.",
+        "<b>Kiến thức</b> &rarr; nạp <b>Thẻ C</b> (bản gộp) + 6 file <code>prompts/</code>.",
+        "Chạy <b>12 câu smoke test</b> trước khi giao cho người khác dùng."
+      ]
+    }
+  ],
+
+  "the_mo_ta": "Thẻ A và B <b>dán vào ô văn bản</b>. Thẻ C là <b>file upload</b> — chỉ dùng khi nền tảng chặn số file.",
+
+  "the": [
+    {
+      "ma": "brain",
+      "nhan": "Thẻ A",
+      "ten": "Bộ não đầy đủ",
+      "nen_tang": "Claude &amp; Gemini",
+      "mo_ta": "§0–§15: chế độ AUTO · 7 bước · hai cổng · ★ công thức hook thắng/thua · ★ hai tầng đầu ra + khuôn kịch bản nhà · 12 điểm pháp chế · luật suy ra"
+    },
+    {
+      "ma": "ngan",
+      "nhan": "Thẻ B",
+      "ten": "Bản ngắn",
+      "nen_tang": "ChatGPT Custom GPT",
+      "tran": 8000,
+      "mo_ta": "Bản nén cho ô Instructions 8.000 ký tự. Giữ nguyên <b>luật chặn</b> và <b>con trỏ sang sổ</b>, bỏ hết ví dụ và giải thích."
+    },
+    {
+      "ma": "gop",
+      "nhan": "Thẻ C",
+      "ten": "Bản gộp 10 sổ",
+      "file": "goi/GOP-tri-thuc.md",
+      "nen_tang": "khi nền tảng chặn số file",
+      "mo_ta": "Gộp <code>om-A</code>&rarr;<code>om-J</code> thành một file, kèm mục lục. Sinh tự động bằng <code>python tools/gop-tham-khao.py</code> — ⛔ đừng sửa trực tiếp."
+    }
+  ],
+
+  "files_mo_ta": "Thứ tự dưới đây <b>là thứ tự agent đọc</b>: <b>quy trình → đọc order → chân dung &amp; công thức hook → thư viện format → khuôn kịch bản → đầu ra → tổ chức ads → pháp chế → module đơn vị → chân dung mắt</b>, rồi tới 6 prompt mẫu.",
+
+  "files_canh_bao": "<p><b>Ba file lõi nhất là <code>om-C</code>, <code>om-G</code> và <code>om-I</code>.</b></p><p>Thiếu <code>om-C</code> thì agent <i>vẫn viết được kịch bản</i> — viết trôi chảy, nghe rất hợp lý, nhưng nó không còn biết hook nào đã chứng minh thắng và hook nào đã chứng minh thua, nên mọi dòng đều được chấm như nhau.</p><p>Thiếu <code>om-G</code> thì mất cổng pháp chế: những câu như <i>“đẹp ngay sau 60 phút”</i> hay <i>“cam kết bảo hành trọn đời”</i> đi thẳng ra ads.</p><p style=\"margin-bottom:0\">Thiếu <code>om-I</code> thì agent tự nghĩ ra khuôn trình bày riêng — phiếu vẫn đẹp, nhưng editor mở ra không thấy cột mình quen đọc, và phải dịch lại từng dòng.</p>",
+
+  "files": [
+    {
+      "duong_dan": "knowledge/om-A-vai-tro-quy-trinh.md",
+      "badge": "★ lõi",
+      "mo_ta": "<b>Vai trò &amp; quy trình</b> — ★ <b>chế độ AUTO</b> · 7 bước · <b>cổng A 8 ô</b> · cổng B · ba loại yêu cầu · cỡ mẫu được kết luận tới đâu · agent dừng ở đâu"
+    },
+    {
+      "duong_dan": "knowledge/om-B-doc-dau-vao.md",
+      "badge": "★",
+      "mo_ta": "<b>Đọc &amp; chuẩn hoá order</b> — 17 cột file order · chuẩn hoá chân dung về <code>CD1</code>–<code>CD6</code> · ★ <b>10 ô agent tự suy ra</b> · 7 loại hook · quy ước tên QC · mã kịch bản"
+    },
+    {
+      "duong_dan": "knowledge/om-C-tri-thuc-khach-hang.md",
+      "badge": "★ cổng chặn",
+      "mo_ta": "<b>Chân dung MŨI + công thức hook</b> — 6 chân dung · hành trình 5A · ma trận lỗ hổng phễu · ★ <b>§5: 4 thành phần thắng + 7 kiểu KÉM, rút từ 91 ad đã chấm</b> · §6 viết hook mới"
+    },
+    {
+      "duong_dan": "knowledge/om-D-thu-vien-format.md",
+      "badge": "",
+      "mo_ta": "<b>Thư viện format L01–L16</b> — cấu trúc theo giây · thời lượng · chỉ số đo · bối cảnh · đạo cụ · dòng batch · ước phút quay · ★ <b>§7 mục lục kịch bản mẫu</b>"
+    },
+    {
+      "duong_dan": "knowledge/om-I-khuon-kich-ban-nha.md",
+      "badge": "★ khuôn nhà",
+      "mo_ta": "<b>Khuôn kịch bản thật</b> — ★ <b>§1 hai tầng đầu ra</b> · khuôn cột theo format · thuật ngữ dựng (<code>trám full</code>, <code>ra beauty</code>) · quy định text · nguồn footage · dòng <code>THUMB</code> · khối <b>TỐI ƯU MIỀN TÂY</b>"
+    },
+    {
+      "duong_dan": "knowledge/om-E-kich-ban-san-xuat.md",
+      "badge": "★",
+      "mo_ta": "<b>Luật viết &amp; đầu ra</b> — 4 khối lời thoại theo mốc giây · text on screen · shot list · ★ <b>42 trường, 6 khối</b> · call sheet gom theo bối cảnh · tái dựng từ video cũ"
+    },
+    {
+      "duong_dan": "knowledge/om-F-to-chuc-ads.md",
+      "badge": "",
+      "mo_ta": "<b>Tổ chức Ads</b> — ma trận 10 ô <code>V1</code>–<code>V5</code>/<code>P1</code>–<code>P5</code> · ⛔ <b>A1 + PERF = không chạy</b> · kho tệp vào/loại trừ · ngưỡng TỐT/KÉM · nhịp duyệt thứ Tư"
+    },
+    {
+      "duong_dan": "knowledge/om-G-phap-che-ranh-gioi.md",
+      "badge": "★ không ngoại lệ",
+      "mo_ta": "<b>Pháp chế</b> — 12 điểm <code>L01</code>–<code>L12</code> · cờ 🟢🟡🔴 · ★ <b>câu thay thế mẫu cho từng vi phạm</b> · 3 quy tắc vàng khi lên hình · mẫu trả lời bình luận · ranh giới cứng"
+    },
+    {
+      "duong_dan": "knowledge/om-H-dich-vu-kangnam.md",
+      "badge": "★ module đơn vị",
+      "mo_ta": "<b>Module đơn vị</b> — chi nhánh &amp; số giấy phép · phạm vi chuyên môn theo tuyến · menu 10 chuyên khoa · ★ <b>bảng giá mắt + ba mức bảo hành đang xung đột</b> · trạng thái xác minh bác sĩ · quyền lợi Việt kiều"
+    },
+    {
+      "duong_dan": "knowledge/om-J-chan-dung-mat.md",
+      "badge": "",
+      "mo_ta": "<b>Chân dung MẮT</b> — ⚠️ <b>đọc §0 trước</b>: phần lớn là suy ra, chưa có sheet chính thức · 6 chân dung · 5A mắt · ★ <b>từ vựng tình trạng mắt</b> · ⚠️ <code>CD5</code> đang lệch quy ước"
+    },
+    {
+      "duong_dan": "prompts/prompt-auto.md",
+      "badge": "★",
+      "mo_ta": "<b>★ AUTO</b> — một câu là đủ · 3 lối tắt · agent sẽ hỏi gì · agent trả về gì · câu nói thẳng khi agent làm sai"
+    },
+    {
+      "duong_dan": "prompts/prompt-doc-order.md",
+      "badge": "",
+      "mo_ta": "<b>Đọc order (B1–B3)</b> — kiểm order đủ để viết chưa · cổng A 8 ô · dòng mâu thuẫn · đối chiếu với ad đã chạy"
+    },
+    {
+      "duong_dan": "prompts/prompt-soi-hook.md",
+      "badge": "★",
+      "mo_ta": "<b>Soi hook (B4)</b> — chấm một hook hoặc cả danh sách · viết hook mới cho ô trống · nhắc lại công thức để đối chiếu · bắt agent khai khi đổi hook"
+    },
+    {
+      "duong_dan": "prompts/prompt-ra-kich-ban.md",
+      "badge": "",
+      "mo_ta": "<b>Viết kịch bản (B5)</b> — kịch bản chi tiết theo khuôn nhà · khối <b>TỐI ƯU MIỀN TÂY</b> · call sheet · tái dựng · câu yêu cầu viết lại khi agent viết chung chung"
+    },
+    {
+      "duong_dan": "prompts/prompt-soat-phap-che.md",
+      "badge": "★",
+      "mo_ta": "<b>Soát pháp chế (B6)</b> — chạy độc lập được · soát cả order / một câu / ad đang chạy · 10 dấu hiệu ĐỎ · 12 dấu hiệu VÀNG · xin dữ kiện còn thiếu"
+    },
+    {
+      "duong_dan": "prompts/prompt-lap-lo-hong.md",
+      "badge": "",
+      "mo_ta": "<b>Lấp lỗ hổng phễu</b> — dựng ma trận chân dung × 5A · 3 ô đáng lấp trước · kiểm PORT trước khi viết mới · hướng hook vừa chạy được vừa sạch pháp chế"
+    }
+  ],
+
+  "smoke": [
+    {
+      "go": "Order ghi nấc A1, camp đích PER. Chạy được không?",
+      "thay": "⛔ <b>Không</b> — người chưa biết mình có vấn đề thì không mời nhắn tin. Đề xuất đổi sang ô <code>V1</code>, hoặc đẩy nấc lên <code>A2</code>",
+      "hl": false
+    },
+    {
+      "go": "Hook \"Sở hữu dáng mũi SLAY nét căng\" chấm thế nào?",
+      "thay": "<code>✗ ĐỔI HOOK</code> — trúng <code>H1</code> tính từ chung chung, <b>kèm dẫn chứng ad cũ đã chấm KÉM</b>",
+      "hl": false
+    },
+    {
+      "go": "Hook \"Mũi từng nâng nhưng không đẹp thì bao lâu sửa lại được?\"",
+      "thay": "<code>✓ QUAY ĐƯỢC</code> — có thành phần ① gọi tình trạng; <b>① một mình là đủ</b>, không cần đủ 2 thành phần",
+      "hl": true
+    },
+    {
+      "go": "Viết kịch bản có bác sĩ Harvey Nguyễn phân tích ca mũi hỏng",
+      "thay": "🔴 <b>ĐỎ</b> — chưa có bác sĩ mũi nào được xác minh. Viết <i>“bác sĩ chuyên khoa”</i>, ⛔ không nêu tên riêng",
+      "hl": true
+    },
+    {
+      "go": "Chân dung CD5 phong thuỷ, hook \"nâng mũi đổi vận tài lộc\"",
+      "thay": "🔴 <b>ĐỎ</b> — chỉ được nói về <b>hình thái dáng mũi</b>, ⛔ không hứa hiệu quả phong thuỷ",
+      "hl": false
+    },
+    {
+      "go": "Order chỉ định format L14. Làm gì?",
+      "thay": "<code>L14</code> <b>chưa được định nghĩa</b> ở thư viện format &rarr; đề xuất format gần nhất, ghi rõ là thay thế, rồi <b>hỏi lại</b>",
+      "hl": false
+    },
+    {
+      "go": "Xếp call sheet cho 10 phiếu này",
+      "thay": "Gom theo <b>BỐI CẢNH</b>, ⛔ không theo nhân vật; chèn <b>15 phút đổi set</b>; <code>S-STUDIO</code> xếp trước",
+      "hl": false
+    },
+    {
+      "go": "Nâng mũi trọn gói bao nhiêu tiền?",
+      "thay": "<code>[CHỜ XÁC NHẬN]</code> — chưa có bảng giá mũi hiện hành. ⛔ Không lấy con số <i>“31TR”</i> từ hook cũ",
+      "hl": true
+    },
+    {
+      "go": "Ra kịch bản chi tiết cho clip này",
+      "thay": "Tra <b>kịch bản mẫu của format đó</b> rồi viết theo <b>khuôn nhà</b>: <code>STT · VOICE · TEXT · FOOTAGE</code>, kết bằng dòng <code>THUMB</code>",
+      "hl": false
+    },
+    {
+      "go": "Footage lấy ở đâu?",
+      "thay": "Ghi <b>mô tả footage cần</b> + <code>[CHỜ ĐIỀU PHỐI CẤP ĐƯỜNG DẪN]</code>. ⛔ Không bịa đường dẫn <code>Z:\\...</code>",
+      "hl": true
+    },
+    {
+      "go": "Clip này chạy miền Tây",
+      "thay": "Xuất <b>thêm</b> khối <code>TỐI ƯU MIỀN TÂY</code> — viết lại <code>VOICE</code>+<code>TEXT</code> giọng miền, ⛔ giữ nguyên footage và thứ tự nhịp",
+      "hl": false
+    },
+    {
+      "go": "Nâng mũi bảo hành mấy năm?",
+      "thay": "⛔ <b>Không đưa số nào</b> — ba mức đang xung đột. <i>“3 năm”</i> là của <b>mắt</b>, không phải mũi",
+      "hl": true
+    }
+  ],
+
+  "smoke_ghi": "<p><b>Câu 3 và câu 10 là hai câu agent sai tự tin nhất.</b></p><p>Câu 3: agent hay chấm <code>⚠</code> vì <i>“chỉ có 1 thành phần”</i>. Nhưng thành phần ① <b>gọi đúng tình trạng</b> là cổng, không phải một-trong-bốn — dữ liệu thật có hook chỉ có ① mà chấm TỐT.</p><p style=\"margin-bottom:0\">Câu 10: agent bịa một đường dẫn <code>Z:\\KANGNAM 2026\\...</code> trông <b>rất thật</b>, vì nó đã thấy hàng chục đường dẫn như vậy trong kịch bản mẫu. Agent không biết ổ <code>Z:</code> có file gì. Một đường dẫn bịa làm editor mất buổi sáng đi tìm.</p>",
+
+  "prompt_intro": "Bảy nhóm theo đúng bảy bước: nạp order → chuẩn hoá → cổng A → <b>soi hook</b> → viết kịch bản → cổng pháp chế → xuất phiếu. Cộng chế độ AUTO để bắt đầu chỉ bằng một câu.",
+
+  "nhom_prompt": [
+    { "ma": "auto", "ten": "★ AUTO · một câu ngắn" },
+    { "ma": "doc", "ten": "B1–B3 Đọc order" },
+    { "ma": "hook", "ten": "★ B4 Soi hook" },
+    { "ma": "kb", "ten": "B5 Kịch bản" },
+    { "ma": "pc", "ten": "⛔ B6 Pháp chế" },
+    { "ma": "lo", "ten": "Lấp lỗ hổng phễu" },
+    { "ma": "cli", "ten": "Dòng lệnh" }
+  ],
+
+  "prompts": [
+    {
+      "nhom": "auto",
+      "ten": "Gõ một câu ngắn là xong",
+      "kieu": "chuẩn",
+      "noi_dung": "Ra kịch bản sản xuất cho order này.\n<link sheet hoặc file excel>"
+    },
+    {
+      "nhom": "auto",
+      "ten": "Có bối cảnh một chút — tốt hơn",
+      "kieu": "★ hay gặp",
+      "noi_dung": "Đây là order nội dung mũi tuần này. Ra kịch bản sản xuất chi tiết để ekip quay\nbatch thứ Tư. Có 2 khách hàng thật đã đồng ý quay.\n\n<link sheet hoặc file>"
+    },
+    {
+      "nhom": "auto",
+      "ten": "Lối tắt — ra hết, không hỏi",
+      "kieu": "rút gọn",
+      "noi_dung": "Cứ ra hết đi, chỗ nào thiếu thì em tự điền mặc định và in đậm GIẢ ĐỊNH."
+    },
+    {
+      "nhom": "auto",
+      "ten": "Lối tắt — giống kỳ trước",
+      "kieu": "rút gọn",
+      "noi_dung": "Làm giống order tuần trước, chỉ hỏi em cái gì đã đổi."
+    },
+    {
+      "nhom": "auto",
+      "ten": "⛔ Khi agent in form bắt điền",
+      "kieu": "⛔ giới hạn",
+      "noi_dung": "Đừng in form. Tự điền cái suy ra được rồi hỏi em 3 câu."
+    },
+    {
+      "nhom": "doc",
+      "ten": "Kiểm order đủ để viết chưa",
+      "kieu": "chuẩn",
+      "noi_dung": "Đọc file order này. Chưa cần viết kịch bản.\n\nLàm ba việc:\n1. Báo số dòng đọc được / số dòng bỏ qua + lý do bỏ.\n2. Chuẩn hoá: chân dung về CD1–CD6, nấc về A1–A5. Suy ra nhiệt · ô camp ·\n   format · tệp vào/loại trừ · ngưỡng. Ô nào em suy ra thì ghi (suy ra).\n3. Chạy cổng A 8 ô cho từng dòng. Chỉ rõ dòng nào thiếu ô nào.\n\nCuối cùng liệt kê riêng:\n- Dòng có mâu thuẫn (vd A1 + PERF, format không thuộc ô camp)\n- Dòng thiếu CHÂN DUNG hoặc NẤC 5A — đây là hai ô chặn\n- Dòng cần khách hàng thật nhưng chưa rõ consent\n\n<link sheet hoặc file>"
+    },
+    {
+      "nhom": "doc",
+      "ten": "★ Đối chiếu với ad đã chạy",
+      "kieu": "★ hay gặp",
+      "noi_dung": "File này có cột HIỆU QUẢ của các ad đã chạy. Quét qua rồi nói cho em:\n- Hook mới nào đang trùng kiểu với hook đã chấm KÉM\n- Hook mới nào trùng công thức với hook đã chấm TỐT\n- Hook nào đã TỐT ở một khu vực mà nên PORT sang khu vực khác thay vì viết mới\n\nDẫn chứng rõ hook cũ nào, khu vực nào, chấm gì."
+    },
+    {
+      "nhom": "doc",
+      "ten": "Order dán tay, không có file",
+      "kieu": "thường",
+      "noi_dung": "Em đếm lại số dòng rồi báo cho anh xác nhận trước khi làm gì tiếp — anh dán tay\nnên có thể mất dòng."
+    },
+    {
+      "nhom": "hook",
+      "ten": "★ Soi một hook",
+      "kieu": "★ bắt buộc",
+      "noi_dung": "Soi hook này cho em. Đừng viết kịch bản.\n\nHOOK: \"<dán hook>\"\nCHÂN DUNG: <CD? hoặc để trống>\nNẤC 5A: <A? hoặc để trống>\n\nCho em biết:\n- Chấm ✓ / ⚠ / ✗\n- Có mấy thành phần của công thức thắng (① tình trạng ② kỹ thuật ③ bằng chứng ④ CTA gửi ảnh)\n- Có trúng kiểu KÉM nào (H1–H7) không\n- Nếu ✗ thì hook đề xuất là gì, và nên bỏ cả ý hay giữ ý quay lại cho đúng"
+    },
+    {
+      "nhom": "hook",
+      "ten": "Soi cả danh sách",
+      "kieu": "chuẩn",
+      "noi_dung": "Soi toàn bộ hook trong file này. Ra bảng chấm, đừng viết kịch bản.\n\nCột: mã · hook · chấm · thành phần có · kiểu KÉM trúng · đề xuất\n\nXếp theo thứ tự ✗ trước, ⚠ sau, ✓ cuối — em muốn xem cái cần sửa trước.\n\n<link sheet hoặc file>"
+    },
+    {
+      "nhom": "hook",
+      "ten": "Viết hook mới cho ô trống",
+      "kieu": "thường",
+      "noi_dung": "Chân dung CD5 · Phong thuỷ ở nấc A2 đang không có content nào.\nViết cho em 3 hook mới.\n\nLuật:\n- Lấy nỗi sợ chi phối của CD5, không lấy khát khao\n- Viết thành câu khách tự gõ, dùng đúng từ khách dùng\n- Gắn một thành phần kỹ thuật hoặc bằng chứng\n- Soát qua 7 kiểu KÉM\n- ⛔ CD5 không được hứa đổi vận / tài lộc — chỉ nói hình thái dáng mũi\n\nMỗi hook ghi rõ [HOOK AGENT ĐỀ XUẤT — chưa qua duyệt]."
+    },
+    {
+      "nhom": "hook",
+      "ten": "⛔ Bắt agent khai khi đổi hook",
+      "kieu": "⛔ bắt buộc",
+      "noi_dung": "Hook là của anh. Em đổi thì phải khai — in đủ ba dòng:\nHOOK GỐC → HOOK ĐỀ XUẤT → VÌ SAO ĐỔI (mã H + dẫn chứng ad cũ)."
+    },
+    {
+      "nhom": "kb",
+      "ten": "★ Kịch bản chi tiết theo khuôn nhà",
+      "kieu": "★ bắt buộc",
+      "noi_dung": "Ra kịch bản chi tiết cho clip <mã>, theo đúng khuôn kịch bản của nhà.\n\n- Tra kịch bản mẫu của format đó trước, rồi theo đúng khuôn cột\n- Mỗi dòng một nhịp: STT · VOICE · TEXT · FOOTAGE (+ THIẾT KẾ / NOTE tuỳ format)\n- VOICE là lời đọc nguyên văn; lấy tiếng thật thì ghi mốc giây\n- TEXT ngắn hơn VOICE nhiều, đừng chép lại\n- Dùng đúng thuật ngữ nhà: trám full · chia đôi trám hình trên bsi nói ở dưới\n  · cho bác sĩ xuống góc · khung box comment · ra beauty\n- THIẾT KẾ ghi đúng thông số: Roboto · màu · viền · cỡ chữ\n- Footage: ghi MÔ TẢ cần gì + [CHỜ ĐIỀU PHỐI CẤP ĐƯỜNG DẪN] — đừng bịa đường dẫn Z:\\\n- Kết bằng dòng THUMB\n- Cột FIX để trống cho người duyệt"
+    },
+    {
+      "nhom": "kb",
+      "ten": "Phiếu order cho cả file (tầng 1)",
+      "kieu": "chuẩn",
+      "noi_dung": "Hook đã soi xong. Giờ ra phiếu kịch bản sản xuất cho các dòng chấm ✓ và ⚠.\n\nMỗi phiếu đủ 42 trường, 6 khối. Riêng khối KỊCH BẢN em viết kỹ:\n- Lời thoại chia theo mốc giây, đọc được nguyên văn\n- Text on screen riêng, không chép lại lời thoại\n- Shot list có cỡ cảnh và ghi chú đặc biệt\n- CTA nói rõ GỬI GÌ – NHẬN GÌ\n\nÔ nào em suy ra thì ghi (suy ra). Cuối bảng in khối GIẢ ĐỊNH và khối\n[CHỜ XÁC NHẬN] kèm ai cấp, chặn mấy phiếu."
+    },
+    {
+      "nhom": "kb",
+      "ten": "Khối TỐI ƯU MIỀN TÂY",
+      "kieu": "thường",
+      "noi_dung": "Thêm khối TỐI ƯU MIỀN TÂY ở cuối: viết lại VOICE và TEXT bằng giọng miền\n(nha · nghen · hông · liền tay). Giữ nguyên footage, thiết kế và thứ tự nhịp."
+    },
+    {
+      "nhom": "kb",
+      "ten": "Call sheet gom theo bối cảnh",
+      "kieu": "chuẩn",
+      "noi_dung": "Gom các phiếu này thành call sheet một buổi quay.\n\nGom theo BỐI CẢNH, không gom theo nhân vật — đổi set 15 phút, đổi người 2 phút.\nXếp S-STUDIO trước (set cố định), bối cảnh di động sau.\nChèn 15 phút đổi set giữa hai nhóm, cộng ước phút quay xem có vừa buổi không.\n\nPhiếu nào cần khách thật thì ghi rõ ⛔ kiểm consent trước giờ quay."
+    },
+    {
+      "nhom": "kb",
+      "ten": "Tái dựng từ video cũ",
+      "kieu": "thường",
+      "noi_dung": "Những dòng này có cột LINK — tức là đã có video. Đừng ra kịch bản quay mới.\nCho em biết mỗi dòng nên đi hướng nào:\n\n- PORT khu vực    : giữ thân video, quay lại hook bằng giọng/bối cảnh miền đó\n- ĐẶT HOOK MỚI    : giữ thân, làm 2 biến thể hook mới\n- DỰNG LẠI        : cắt đoạn vi phạm, thay text overlay\n\nNhắc em dòng nào cần kiểm thời hạn consent cũ trước khi dùng lại footage khách."
+    },
+    {
+      "nhom": "kb",
+      "ten": "⛔ Khi agent viết chung chung",
+      "kieu": "⛔ giới hạn",
+      "noi_dung": "Viết lời thoại đọc được nguyên văn, có mốc giây.\nKhối LÕI phải có cơ chế — giải thích cái gì xảy ra trong cơ thể, đừng toàn lời khen.\nBối cảnh ghi mã + bàn ghế + hướng ngồi + đạo cụ trong khung.\nB-roll ghi mốc giây + nội dung hình + cỡ cảnh.\nCTA phải nói rõ gửi ảnh gì, nhận lại gì."
+    },
+    {
+      "nhom": "pc",
+      "ten": "★ Soát cả order",
+      "kieu": "★ bắt buộc",
+      "noi_dung": "Chỉ soát pháp chế thôi, đừng viết kịch bản.\n\nSoát theo 12 điểm L01–L12. Mỗi dòng gắn một cờ 🟢 / 🟡 / 🔴.\n\n⛔ Cờ nào cũng phải có CÂU THAY THẾ cụ thể — đừng ghi \"vi phạm L04\" rồi để đó.\nCờ ĐỎ thì đề xuất bản dựng thay thế.\n\nCuối cùng gom lại: mấy dòng ĐỎ, mấy VÀNG, mấy XANH, và dòng nào chặn vì\nthiếu dữ kiện từ om-H (bảng giá, tên bác sĩ, số giấy phép, chính sách bảo hành).\n\n<link sheet hoặc file>"
+    },
+    {
+      "nhom": "pc",
+      "ten": "Soát một câu",
+      "kieu": "chuẩn",
+      "noi_dung": "Câu này có lên ads được không?\n\n\"<dán câu>\"\n\nNói rõ: cờ gì · trúng điểm L nào · câu thay thế là gì."
+    },
+    {
+      "nhom": "pc",
+      "ten": "Soát ad đang chạy",
+      "kieu": "⛔ rủi ro",
+      "noi_dung": "Những ad này đang chạy. Soát lại pháp chế.\n\nVới ad có cờ ĐỎ: nhắc em là giữ ngân sách hiện tại, KHÔNG tăng, và dựng bản\nthay thế — chứ không phải tắt ngay nếu đang ra kết quả.\n\n<link sheet hoặc file>"
+    },
+    {
+      "nhom": "pc",
+      "ten": "★ Xin dữ kiện còn thiếu để mang đi họp",
+      "kieu": "★ hay gặp",
+      "noi_dung": "Liệt kê cho em đúng những thứ cần xin để mở các chặn hiện tại.\nMỗi dòng ghi: xin cái gì · ai cấp · đang chặn mấy phiếu.\n\nEm cần mang danh sách này đi họp."
+    },
+    {
+      "nhom": "pc",
+      "ten": "⛔ Khi agent tự nhận là đã duyệt",
+      "kieu": "⛔ ranh giới",
+      "noi_dung": "Em không kết luận hợp pháp. Em chỉ soát theo 12 điểm và đưa câu thay thế.\nAi ký là bác sĩ kiểm duyệt và pháp chế."
+    },
+    {
+      "nhom": "lo",
+      "ten": "Dựng ma trận lỗ hổng",
+      "kieu": "chuẩn",
+      "noi_dung": "Dựng ma trận chân dung × 5A từ file này. Đếm số content đang giữ trong từng ô.\nÔ nào = 0 thì đánh dấu.\n\nRồi nói cho em ba điều:\n- Chân dung nào đang gánh quá nhiều (rủi ro tập trung)\n- Nấc nào đang trống cả hàng\n- Chân dung nào chưa có dữ liệu để biết nên giữ hay bỏ\n\nĐừng viết kịch bản. Em muốn thấy bức tranh trước.\n\n<link sheet hoặc file>"
+    },
+    {
+      "nhom": "lo",
+      "ten": "Đề xuất kế hoạch lấp",
+      "kieu": "thường",
+      "noi_dung": "Giờ đề xuất kế hoạch lấp. Luật:\n\n- ⛔ Đừng lấp mọi ô cùng lúc\n- Theo tỷ trọng đã kiểm chứng: CD1 ~50% · CD3+CD6 ~25% · CD4 ~12% · CD2+CD5 ~12%\n- Ưu tiên ô nào có đòn bẩy cao nhất trước, nói rõ vì sao\n- Mỗi ô đề xuất 1–2 hook, ghi [HOOK AGENT ĐỀ XUẤT — chưa qua duyệt]\n- Gắn luôn ô camp, format, nhiệt cho từng hook\n\nCho em biết sprint 1 làm gì, sprint 2 làm gì."
+    },
+    {
+      "nhom": "lo",
+      "ten": "★ Kiểm PORT trước khi viết mới",
+      "kieu": "★ hay gặp",
+      "noi_dung": "Trước khi viết hook mới, quét lại các ad đã chấm TỐT.\n\nCó hook nào đã TỐT ở một khu vực mà có thể PORT sang khu vực khác không?\nPort rẻ hơn viết mới: giữ thân video, chỉ quay lại hook.\n\nNhắc em: một hook TỐT ở miền Nam không tự động TỐT ở miền Bắc — port thì\nphải quay lại hook bằng giọng và bối cảnh miền đó."
+    },
+    {
+      "nhom": "cli",
+      "ten": "Đọc order từ Google Sheet",
+      "kieu": "dòng lệnh",
+      "noi_dung": "python tools/om.py --sheet-id <SPREADSHEET_ID> --gid 0 --out out/phieu-tuan-45.csv"
+    },
+    {
+      "nhom": "cli",
+      "ten": "Đọc order từ file excel",
+      "kieu": "dòng lệnh",
+      "noi_dung": "python tools/om.py order-T11.xlsx --sheet \"KẾ HOẠCH SẢN XUẤT\""
+    },
+    {
+      "nhom": "cli",
+      "ten": "Gộp lại tri thức sau khi sửa",
+      "kieu": "dòng lệnh",
+      "noi_dung": "python tools/gop-tham-khao.py"
+    },
+    {
+      "nhom": "cli",
+      "ten": "⛔ Canh giới hạn 8.000 ký tự",
+      "kieu": "dòng lệnh",
+      "noi_dung": "python tools/dem-ngan.py"
+    },
+    {
+      "nhom": "cli",
+      "ten": "Đưa file đã tiền xử lý cho agent",
+      "kieu": "chuẩn",
+      "noi_dung": "Đây là phiếu đã qua B1–B3 từ tools/om.py. Chạy B4–B7:\nsoi lại hook, viết lời thoại theo mốc giây, shot list, call sheet gom theo bối cảnh,\nvà bảng cờ pháp chế kèm câu thay thế.\n\nCuối bảng in khối GIẢ ĐỊNH và khối [CHỜ XÁC NHẬN] kèm ai cấp, chặn mấy phiếu."
+    }
+  ],
+
+  "prompt_ghi": "<p style=\"margin-bottom:0\"><b>Vì sao mọi prompt viết kịch bản đều bắt ghi mốc giây và đường dẫn footage.</b> Phiếu này không phải để đọc — nó để một DOP và một editor <i>làm theo</i>. Một dòng ghi <i>“thêm B-roll minh hoạ”</i> đọc rất hợp lý trong cuộc họp, nhưng ra phim trường thì không ai biết bấm máy vào đâu, và clip đó bị dồn xuống cuối buổi rồi bỏ. Mốc giây và đường dẫn là thứ biến một ý tưởng thành một việc làm được trong ngày.</p>",
+
+  "dieu_intro": "Năm điều này là phần dễ bỏ qua nhất khi cài, và cũng là phần làm agent này khác một khung chat biết viết content. Đọc một lượt trước khi giao agent cho người khác dùng.",
+
+  "dieu": [
+    {
+      "pre": "Điều 1",
+      "h3": "Hook kể tình trạng, không kể tính từ",
+      "html": "<div class=\"note stop\"><p style=\"margin-bottom:0\"><b>Đây là kết luận từ 91 ad thật đã chấm, không phải quan điểm.</b> Hook gọi đúng tình trạng thì khách tự nhận ra mình trong 3 giây. Hook dùng tính từ thì không ai tự nhận mình là người cần <i>“mũi vạn người mê”</i>.</p></div><div class=\"vs\"><div class=\"good\"><div class=\"h\">✓ Đã chấm TỐT</div><div class=\"w\">Gọi tình trạng</div><p><i>“Mũi thấp tẹt, đầu mũi hếch sửa sao cho đẹp”</i> — winner rõ nhất hệ<br><i>“Mũi tẹt, cánh mũi to nên nâng mũi hay cắt cánh?”</i><br><i>“6 năm sau nâng mũi, dáng mũi giờ ra sao?”</i></p></div><div><div class=\"h\">✗ Đã chấm KÉM</div><div class=\"w\">Dùng tính từ</div><p><i>“Làm sao để có chiếc mũi vạn người mê”</i><br><i>“Sở hữu dáng mũi SLAY nét căng”</i><br><i>“Hành trình nâng mũi của tôi”</i> — không nói được của ai, tình trạng gì</p></div></div><p>Vì vậy agent <b>chấm hook ở bước B4, trước khi viết kịch bản</b>. Viết một kịch bản đẹp cho một hook KÉM là đốt một buổi quay.</p><p style=\"margin-bottom:0\">★ <b>Thành phần ① là cổng, không phải một-trong-bốn.</b> Có ① dù một mình &rarr; <code>✓ QUAY ĐƯỢC</code>. Dữ liệu thật có hook chỉ có ① mà chấm TỐT; ngược lại hook đủ cơ chế và bằng chứng nhưng không gọi tình trạng thì khách không dừng lại ở giây thứ 3.</p>"
+    },
+    {
+      "pre": "Điều 2",
+      "h3": "Đầu ra có hai tầng — đừng trộn",
+      "html": "<div class=\"note warn\"><p style=\"margin-bottom:0\"><b>Một clip <code>L03</code> có 20–25 nhịp.</b> Nhét 25 nhịp vào một ô của bảng phiếu là ra một bảng không ai đọc được. Hai tầng không thay nhau mà bổ sung nhau.</p></div><div class=\"vs\"><div class=\"good\"><div class=\"h\">Tầng 1 · Phiếu order</div><div class=\"w\">1 dòng = 1 clip</div><p><b>42 trường, 6 khối.</b> Cho <b>quản lý &amp; điều phối</b>: clip này là gì, cho chân dung nào, chạy ô nào, ai duyệt, đo bằng chỉ số gì.</p></div><div><div class=\"h\">Tầng 2 · Kịch bản chi tiết</div><div class=\"w\">1 dòng = 1 NHỊP</div><p><b>Khuôn nhà.</b> Cho <b>editor &amp; DOP</b>: giây này đọc câu gì, hiện chữ gì, lấy footage nào, dựng thế nào.</p></div></div><p style=\"margin-bottom:0\">Trường <code>LỜI THOẠI THEO MỐC GIÂY</code> ở tầng 1 là <b>con trỏ</b> sang sheet kịch bản tầng 2 — đúng như cách khối đang làm: mỗi format một file riêng.</p>"
+    },
+    {
+      "pre": "Điều 3",
+      "h3": "Khuôn là của nhà — agent theo, không tự nghĩ",
+      "html": "<p>Khối đã có <b>thư viện kịch bản thật, mỗi format một file</b>. Agent <b>luôn tra kịch bản mẫu của format đó trước khi viết</b>, rồi theo đúng khuôn cột — editor đã quen đọc theo thứ tự đó.</p><div class=\"tw\" style=\"margin-top:4px\"><table style=\"min-width:0\"><tbody><tr><td>Lõi chung, mọi format</td><td><code>STT · VOICE · TEXT · FOOTAGE</code></td></tr><tr><td>Biến thể</td><td>+ <code>THIẾT KẾ</code> · <code>NOTE</code> · <code>FIX</code></td></tr><tr class=\"hl\"><td>Dòng cuối, <b>bắt buộc</b></td><td><code>THUMB</code> — ≤2 dòng, in hoa, lặp lại hook</td></tr><tr><td>⛔ Cột <code>FIX</code></td><td><b>để trống</b> — chỗ người duyệt ghi yêu cầu sửa</td></tr></tbody></table></div><p>Dùng đúng <b>thuật ngữ nhà</b>, đừng diễn đạt lại: <code>trám full</code> · <code>trám cận</code> · <code>chia đôi, trám hình trên, bsi nói ở dưới</code> · <code>cho bác sĩ xuống góc</code> · <code>tách nền bác sĩ</code> · <code>khung box comment</code> · <code>Text nền FT</code> · <code>biến đổi trc sau</code> · <code>ra beauty</code>.</p><div class=\"note stop\"><p style=\"margin-bottom:0\">⛔ <b>Agent không biết ổ <code>Z:</code> có file gì.</b> Nó đã thấy hàng chục đường dẫn <code>Z:\\KANGNAM 2026\\...</code> trong kịch bản mẫu nên bịa ra một đường dẫn <i>trông rất thật</i> là việc rất dễ xảy ra. Đúng cách: ghi <b>mô tả footage cần</b> + <code>[CHỜ ĐIỀU PHỐI CẤP ĐƯỜNG DẪN]</code>.</p></div><p style=\"margin-bottom:0\">⚠️ <b>Kịch bản mẫu hiện có là của chuyên khoa MẮT.</b> Viết cho mũi thì mượn <b>khuôn</b> — cột, nhịp, thuật ngữ, thông số text — nhưng ⛔ <b>không mượn nội dung y khoa và không mượn con số</b>: giá, thời gian mổ, mốc cắt chỉ, thời hạn bảo hành đều khác theo dịch vụ.</p>"
+    },
+    {
+      "pre": "Điều 4",
+      "h3": "Cổng pháp chế không nới, kể cả khi kịch bản cũ đã viết thế",
+      "html": "<div class=\"note stop\"><p style=\"margin-bottom:0\"><b>Kịch bản thật đang chứa nhiều câu mà cổng B gắn cờ.</b> Đây không phải lỗi của cổng B, cũng không phải lý do để nới nó.</p></div><div class=\"tw\" style=\"margin-top:4px\"><table style=\"min-width:0\"><tbody><tr><td><i>“Không đau - Không sưng bầm”</i> làm <b>text thương hiệu</b></td><td>🟡 chỉ được là lời khách kể</td></tr><tr><td><i>“VÔ KHUẨN 100%”</i></td><td>🟡 khẳng định tuyệt đối</td></tr><tr><td><i>“Đường sẹo tàng hình”</i> · <i>“7 NGÀY LÀ ĐẸP”</i></td><td>🟡 cam kết kết quả</td></tr><tr class=\"hl\"><td><i>“15+ năm kinh nghiệm”</i> · <i>“20.000+ khách hàng”</i></td><td>🔴 con số cần nguồn</td></tr><tr class=\"hl\"><td>Tên bác sĩ chưa xác minh</td><td>🔴 chạm cùng lúc <code>L01</code> <code>L02</code> <code>L08</code></td></tr></tbody></table></div><p><b>Agent xử thế nào:</b> viết theo khuôn nhà, nhưng <b>vẫn chấm cờ cho clip mới</b>, và nêu kèm dẫn chứng — <i>“câu này giống câu đang dùng ở kịch bản <code>L09</code> nhịp 2, nhưng vẫn là cờ 🟡. Đề xuất đổi thành…”</i></p><p style=\"margin-bottom:0\">⛔ <b>Agent không tự sửa kho cũ.</b> Rà lại các ad đang chạy là quyết định của khối + pháp chế, không phải việc agent tự làm. Và ⛔ <b>mỗi cờ phải có câu thay thế cụ thể</b> — ghi <i>“vi phạm L04”</i> rồi để đó là đẩy việc về cho người order.</p>"
+    },
+    {
+      "pre": "Điều 5",
+      "h3": "Hai chỗ agent sai tự tin nhất",
+      "html": "<div class=\"vs\"><div><div class=\"h\">① Bịa con số</div><div class=\"w\">Giá · bảo hành · mốc hồi phục</div><p>Hook cũ <b>không phải nguồn giá</b>. Con số <i>“31TR”</i> lưu hành rộng trong ad mũi nhưng chưa đối chiếu bảng giá hiện hành.</p><p style=\"margin-bottom:0\">★ <b>Bảo hành đang có ba mức cùng chạy:</b> <i>3 năm</i> (kịch bản mắt) · <i>10 năm</i> (chân dung mũi) · <i>trọn đời</i> (nhiều hook mũi). Ba cái không thể cùng đúng. Agent dùng <i>3 năm</i> cho <b>mắt</b>, và ⛔ <b>không số nào</b> cho mũi.</p></div><div><div class=\"h\">② Bịa đường dẫn</div><div class=\"w\">Footage trên ổ Z: và NAS</div><p>Agent đã thấy hàng chục đường dẫn thật trong kịch bản mẫu, nên nó sinh ra một đường dẫn <b>đúng định dạng, đúng cấu trúc thư mục, và không tồn tại</b>.</p><p style=\"margin-bottom:0\">Một đường dẫn bịa làm editor mất buổi sáng đi tìm — và lần sau thì cả phiếu mất tin cậy.</p></div></div><div class=\"note warn\"><p style=\"margin-bottom:0\"><b>Cả hai lỗi này giống nhau ở một chỗ:</b> agent không im lặng mà <i>rất tự tin</i>, vì nó đã thấy đủ nhiều ví dụ thật để bắt chước được <b>hình thức</b> mà không có <b>nội dung</b>. Vì vậy mọi số và mọi đường dẫn phải đi qua <code>[CHỜ XÁC NHẬN]</code> hoặc <code>[CHỜ ĐIỀU PHỐI CẤP ĐƯỜNG DẪN]</code>, kèm <b>ai cấp</b>.</p></div>"
+    }
+  ],
+
+  "chan_intro": "Agent cài xong là chạy được ngay. Nhưng có <b>sáu việc phải xin trước khi dùng thật</b> — agent in đúng sáu dòng này vào khối <code>[CHỜ XÁC NHẬN]</code> mỗi lần xuất phiếu, cho tới khi được cấp.",
+
+  "chan": [
+    {
+      "muc": "🔴",
+      "viec": "<b>Chính sách bảo hành bằng văn bản</b> — thời hạn thật là bao nhiêu, theo từng dịch vụ",
+      "ai": "Pháp chế",
+      "chan": "⚠️ <b>Cấp bách nhất.</b> Ba mức đang cùng chạy trên ads thật: <i>3 năm</i> · <i>10 năm</i> · <i>trọn đời</i> → chắc chắn có cái sai, và đó là cờ 🔴 đang phát sinh",
+      "hl": true
+    },
+    {
+      "muc": "🔴",
+      "viec": "<b>Danh sách bác sĩ đã xác minh</b> — tên đúng chứng chỉ · số CCHN · phạm vi chuyên môn · cơ sở hành nghề · văn bản đồng ý dùng hình ảnh",
+      "ai": "Vận hành + pháp chế",
+      "chan": "⛔ Mọi phiếu có tên bác sĩ bị chặn. Kịch bản thật đang nêu <i>“Dr. Mard Nguyen”</i>, <i>“Dr. Hải”</i>; nhiều ad mũi đang chạy đã bị gắn cờ vì lý do này",
+      "hl": true
+    },
+    {
+      "muc": "🔴",
+      "viec": "<b>Bảng giá trọn gói hiện hành</b> cho các dịch vụ ngoài mắt + quyền lợi từng gói",
+      "ai": "Vận hành / sales",
+      "chan": "⛔ Phiếu <code>L11</code> và mọi hook nấc <code>A4</code> của mũi. Mắt đã có số nháp từ kịch bản <code>L11</code> — nhưng vẫn phải đối chiếu bản chính thức",
+      "hl": false
+    },
+    {
+      "muc": "🔴",
+      "viec": "<b>Số giấy phép hoạt động đủ 7 cơ sở</b> — hiện chỉ có 2: Hà Nội <code>194/BYT-GPHĐ</code> · Sài Gòn <code>287/BYT-GPHĐ</code>",
+      "ai": "Pháp chế",
+      "chan": "⛔ Mọi phiếu local <code>L12</code> gắn với 5 cơ sở còn lại. Số giấy phép là thông tin <b>bắt buộc</b> trong quảng cáo dịch vụ khám chữa bệnh",
+      "hl": false
+    },
+    {
+      "muc": "🟠",
+      "viec": "<b>Hướng xử <code>CD5</code> của chuyên khoa mắt</b> — mũi là phong thuỷ, mắt là lão hoá",
+      "ai": "Khối Ads",
+      "chan": "⚠️ Nếu để lệch thì báo cáo so <code>CD5</code> giữa hai dịch vụ sẽ so <b>hai tệp khác hẳn nhau</b> — đúng cái mà quy ước mã chung muốn tránh. Ba hướng A/B/C ở <code>om-J</code> §1",
+      "hl": false
+    },
+    {
+      "muc": "🟡",
+      "viec": "<b>Định nghĩa format <code>L13</code> <code>L14</code> <code>L15</code> <code>L16</code></b> + <b>kịch bản mẫu cho <code>L01</code></b>",
+      "ai": "Content Lead",
+      "chan": "⚠️ Kế hoạch Ads đang trỏ tới <code>L13</code>–<code>L15</code> nhưng thư viện Format chỉ định nghĩa tới <code>L12</code>. <code>L01</code> là format xương sống mà ô link kịch bản mẫu đang trống",
+      "hl": false
+    }
+  ],
+
+  "chan_ghi": [
+    {
+      "kieu": "stop",
+      "html": "<p style=\"margin-bottom:0\"><b>Dòng 🔴 thứ nhất không phải thủ tục nội bộ.</b> Ba thời hạn bảo hành khác nhau đang <i>cùng xuất hiện trên ads thật</i>. Khách đọc được cả ba, và người nào chốt theo con số lớn nhất thì đó là cái họ tin là đã được hứa. Đây là rủi ro pháp chế đang phát sinh mỗi ngày, không phải một ô trống trong bảng.</p>"
+    },
+    {
+      "kieu": "ok",
+      "html": "<p style=\"margin-bottom:0\"><b>Xin xong sáu dòng trên thì agent mở gần hết chặn.</b> Trong lúc chờ, agent vẫn chạy được đầy đủ: nó viết kịch bản, chấm hook, ra call sheet — chỉ thay con số bằng <code>[CHỜ XÁC NHẬN]</code> và ghi rõ <b>ai cấp</b>, <b>chặn mấy phiếu</b>. Cách đó giữ cho việc sản xuất không dừng, mà cũng không có câu nào chưa kiểm đi ra ads.</p>"
+    }
+  ],
+
+  "footer": "<b>Agent dịch order thành phiếu quay và gắn cờ. Bác sĩ kiểm duyệt và pháp chế ký. Ekip bấm máy.</b> Ba vai, không ai làm thay ai. <i>Quyết định cuối luôn thuộc người dùng.</i>"
+}

@@ -222,6 +222,23 @@ NHƯNG sheet Format mẫu chỉ định nghĩa tới L12.
 
 ---
 
+## 7. ★ KỊCH BẢN MẪU CÓ THẬT — TRA TRƯỚC KHI VIẾT
+
+> Khối có **thư viện kịch bản thật, mỗi format một file**. ⛔ **Luôn tra kịch bản mẫu của format đó trước khi viết mới** — khuôn cột, thuật ngữ dựng và thông số text lấy từ đó (`om-I`).
+
+**Mục lục:** `docs.google.com/spreadsheets/d/1g4ti7tIY0pLqu-Hv305tIVDjnU_qlMyL3lLUOOkkvlY` *(cột `Format` → cột `Link kịch bản`)*
+
+| Format | Kịch bản mẫu |
+|---|---|
+| `L01` | ⚠️ **TRỐNG** — chưa có mẫu. Dùng khuôn `L03` rút gọn, ghi rõ là khuôn mượn |
+| `L02` … `L12` | Có mẫu, tra qua mục lục trên |
+
+⚠️ **Kịch bản mẫu hiện có là của chuyên khoa MẮT (cắt mí).** Viết cho **mũi** thì mượn **khuôn** *(cột · nhịp · thuật ngữ · thông số text)*, ⛔ **không mượn nội dung y khoa** — chỉ định, mốc hồi phục, công nghệ của mắt khác hoàn toàn của mũi.
+
+⛔ **Không mượn con số từ kịch bản mắt sang mũi**: giá, thời gian mổ, mốc cắt chỉ, thời hạn bảo hành đều khác theo dịch vụ.
+
+---
+
 ## 6. ƯỚC THỜI GIAN QUAY
 
 | Format | Phút/clip (đã gồm set up) |

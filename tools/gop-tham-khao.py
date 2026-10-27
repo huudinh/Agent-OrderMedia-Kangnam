@@ -24,6 +24,8 @@ THU_TU = [
     "om-F-to-chuc-ads.md",
     "om-G-phap-che-ranh-gioi.md",
     "om-H-dich-vu-kangnam.md",
+    "om-I-khuon-kich-ban-nha.md",
+    "om-J-chan-dung-mat.md",
 ]
 
 DAU_TRANG = """# 📦 GỘP TRI THỨC — AGENT-ORDERMEDIA-KANGNAM

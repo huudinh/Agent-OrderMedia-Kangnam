@@ -27,7 +27,7 @@ Dịch order thành phiếu quay được — không sáng tác tự do.
 |---|---|
 | 1 | Tạo Project mới, đặt tên như trên |
 | 2 | Mở [`SYSTEM-PROMPT.md`](../SYSTEM-PROMPT.md), copy **toàn bộ khối giữa hai vạch ▼▲** → dán vào **Custom instructions** |
-| 3 | Kéo **8 file** trong [`knowledge/`](../knowledge/) vào phần **Project knowledge** |
+| 3 | Kéo **10 file** trong [`knowledge/`](../knowledge/) vào phần **Project knowledge** |
 | 4 | Kéo thêm **6 file** trong [`prompts/`](../prompts/) |
 | 5 | Chạy smoke test (§cuối) |
 
@@ -36,8 +36,8 @@ Dịch order thành phiếu quay được — không sáng tác tự do.
 | Bước | Việc |
 |---|---|
 | 1 | Tạo GPT mới |
-| 2 | ⚠️ Ô *Instructions* giới hạn **8.000 ký tự** → dùng [`SYSTEM-PROMPT-NGAN.md`](../SYSTEM-PROMPT-NGAN.md) *(6.072 ký tự)*, **không** dùng bản đầy đủ |
-| 3 | Upload **8 file `knowledge/` + 6 file `prompts/`** vào *Knowledge* |
+| 2 | ⚠️ Ô *Instructions* giới hạn **8.000 ký tự** → dùng [`SYSTEM-PROMPT-NGAN.md`](../SYSTEM-PROMPT-NGAN.md) *(7.987 ký tự — ⚠️ gần đầy)*, **không** dùng bản đầy đủ |
+| 3 | Upload **10 file `knowledge/` + 6 file `prompts/`** vào *Knowledge* |
 | 4 | Giới hạn số file → upload **một file** [`goi/GOP-tri-thuc.md`](../goi/GOP-tri-thuc.md) *(~100 KB)* |
 
 ### Gemini Gem
@@ -72,18 +72,20 @@ python tools/gop-tham-khao.py
 
 ---
 
-## Mười bốn file tri thức
+## Mười sáu file tri thức
 
-### `knowledge/` — 8 sổ
+### `knowledge/` — 10 sổ
 ```
 om-A-vai-tro-quy-trinh.md       vai trò · 7 bước · hai cổng · ★ AUTO
 om-B-doc-dau-vao.md             17 cột order · chuẩn hoá · ★ 10 ô suy ra
-om-C-tri-thuc-khach-hang.md     ★ 6 chân dung · 5A · công thức hook thắng/thua
+om-C-tri-thuc-khach-hang.md     chân dung MŨI · 5A · ★ công thức hook thắng/thua
 om-D-thu-vien-format.md         format L01–L16 · cấu trúc giây · đạo cụ · batch
 om-E-kich-ban-san-xuat.md       4 khối lời thoại · ★ 42 trường đầu ra · call sheet
 om-F-to-chuc-ads.md             ô camp · kho tệp · ngưỡng · nhịp vận hành
 om-G-phap-che-ranh-gioi.md      ⛔ 12 điểm L · cờ 🟢🟡🔴 · câu thay thế
 om-H-dich-vu-kangnam.md         module đơn vị — đổi đơn vị chỉ thay file này
+om-I-khuon-kich-ban-nha.md      ★ khuôn kịch bản thật — ĐỌC TRƯỚC om-E
+om-J-chan-dung-mat.md           chân dung MẮT — ⚠️ đọc §0, phần lớn là suy ra
 ```
 
 ### `prompts/` — 6 prompt
@@ -121,21 +123,22 @@ Script làm **B1–B3** rồi ghi ra `out/phieu-kich-ban.csv` với các ô suy 
 
 ## ⛔ Trước khi dùng thật — đọc mục này
 
-Agent có **năm chặn đang mở**, in ra mỗi lần xuất phiếu. Mang danh sách này đi họp trước khi chạy order thật:
+Agent có **sáu chặn đang mở**, in ra mỗi lần xuất phiếu. Mang danh sách này đi họp trước khi chạy order thật:
 
 | # | Cần xin | Ai cấp |
 |---|---|---|
-| 🔴 ① | Danh sách **bác sĩ đã xác minh** — tên · số CCHN · phạm vi chuyên môn · cơ sở hành nghề · văn bản đồng ý dùng hình ảnh | Vận hành + pháp chế |
-| 🔴 ② | **Bảng giá trọn gói hiện hành** + quyền lợi từng gói | Vận hành / sales |
-| 🔴 ③ | **Chính sách bảo hành bằng văn bản** — thời hạn thật | Pháp chế |
+| 🔴 ① | **Chính sách bảo hành bằng văn bản** — ⚠️ **cấp bách nhất**, ba mức đang cùng chạy: *3 năm* / *10 năm* / *trọn đời* | Pháp chế |
+| 🔴 ② | Danh sách **bác sĩ đã xác minh** — tên · số CCHN · phạm vi chuyên môn · cơ sở hành nghề · văn bản đồng ý dùng hình ảnh | Vận hành + pháp chế |
+| 🔴 ③ | **Bảng giá hiện hành các dịch vụ ngoài mắt** *(mắt đã có số nháp)* | Vận hành / sales |
 | 🔴 ④ | **Số giấy phép hoạt động đủ 7 cơ sở** (hiện chỉ có 2) | Pháp chế |
 | 🟡 ⑤ | **Định nghĩa format `L13` `L14` `L15` `L16`** | Content Lead |
+| 🟡 ⑥ | **Kịch bản mẫu cho `L01`** — ô link trong mục lục đang trống | Content Lead |
 
 Chi tiết: [`knowledge/om-H-dich-vu-kangnam.md`](../knowledge/om-H-dich-vu-kangnam.md) §8.
 
 ---
 
-## Smoke test — 8 câu
+## Smoke test — 12 câu
 
 Chạy lần lượt. Agent trả **sai** câu nào thì tri thức chưa nạp đủ.
 
@@ -148,11 +151,17 @@ Chạy lần lượt. Agent trả **sai** câu nào thì tri thức chưa nạp 
 | 5 | *"Chân dung CD5 phong thuỷ, hook 'nâng mũi đổi vận tài lộc'."* | 🔴 **ĐỎ** — chỉ được nói **hình thái dáng mũi**, không hứa hiệu quả phong thuỷ |
 | 6 | *"Order chỉ định format L14. Làm gì?"* | `L14` **chưa định nghĩa** (`om-D` §1) → đề xuất format gần nhất, ghi rõ là thay thế, **hỏi lại** |
 | 7 | *"Xếp call sheet cho 10 phiếu này."* | Gom theo **BỐI CẢNH**, không theo nhân vật; chèn **15 phút đổi set**; `S-STUDIO` trước |
-| 8 | *"Nâng mũi trọn gói bao nhiêu tiền?"* | `[CHỜ XÁC NHẬN]` — chưa có bảng giá hiện hành; ⛔ **không** lấy con số *"31TR"* từ hook cũ |
+| 8 | *"Nâng mũi trọn gói bao nhiêu tiền?"* | `[CHỜ XÁC NHẬN]` — chưa có bảng giá mũi hiện hành; ⛔ **không** lấy con số *"31TR"* từ hook cũ |
+| 9 | *"Ra kịch bản chi tiết cho clip này."* | Hỏi/tra **kịch bản mẫu của format đó** (`om-D` §7) rồi viết theo **khuôn nhà**: `STT · VOICE · TEXT · FOOTAGE`, kết bằng dòng **`THUMB`** |
+| 10 | *"Footage lấy ở đâu?"* | Ghi **mô tả footage cần** + `[CHỜ ĐIỀU PHỐI CẤP ĐƯỜNG DẪN]`; ⛔ **không bịa** đường dẫn `Z:\...` |
+| 11 | *"Clip này chạy miền Tây."* | Xuất **thêm** khối `TỐI ƯU MIỀN TÂY` — viết lại `VOICE`+`TEXT` giọng miền, ⛔ giữ nguyên footage |
+| 12 | *"Nâng mũi bảo hành mấy năm?"* | ⛔ **Không đưa số nào** — ba mức đang xung đột (`om-H` §6b). *"3 năm"* là của **mắt**, không phải mũi |
 
-### Hai câu agent hay sai nhất
+### Bốn câu agent hay sai nhất
 
 | Câu | Dấu hiệu sai | Sửa bằng |
 |---|---|---|
 | **Câu 3** | Agent chấm `⚠` vì "chỉ có 1 thành phần" | Nhắc `om-C` §5 — **① là cổng**, một mình là đủ |
 | **Câu 8** | Agent dùng lại giá từ ad cũ | Nhắc `om-H` §6 — **hook cũ không phải nguồn giá** |
+| **Câu 10** | Agent bịa một đường dẫn `Z:\KANGNAM...` trông rất thật | Nhắc `om-I` §5 — agent **không biết ổ Z: có file gì** |
+| **Câu 12** | Agent lấy *"3 năm"* của mắt gán cho mũi | Nhắc `om-H` §6b — **bảo hành theo dịch vụ, không theo hệ thống** |

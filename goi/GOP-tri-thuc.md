@@ -6,7 +6,7 @@
 > Dùng khi nền tảng chỉ cho nạp ít file, hoặc muốn dán một phát vào phần Tri thức.
 > Agent thấy file này thì tra trong đây, ⛔ đừng báo thiếu file.
 
-Sinh ngày: 2026-10-27 · 8 sổ · 1586 dòng
+Sinh ngày: 2026-10-27 · 10 sổ · 2188 dòng
 
 ---
 
@@ -20,6 +20,8 @@ Sinh ngày: 2026-10-27 · 8 sổ · 1586 dòng
 6. [om-F · TỔ CHỨC ADS — Ô CAMP, KHO TỆP, NGƯỠNG](#om-F-to-chuc-ads) — `om-F-to-chuc-ads.md`
 7. [om-G · PHÁP CHẾ & RANH GIỚI CỨNG](#om-G-phap-che-ranh-gioi) — `om-G-phap-che-ranh-gioi.md`
 8. [om-H · MODULE ĐƠN VỊ — BỆNH VIỆN THẨM MỸ KANGNAM](#om-H-dich-vu-kangnam) — `om-H-dich-vu-kangnam.md`
+9. [om-I · KHUÔN KỊCH BẢN CỦA NHÀ](#om-I-khuon-kich-ban-nha) — `om-I-khuon-kich-ban-nha.md`
+10. [om-J · CHÂN DUNG KHÁCH HÀNG — CHUYÊN KHOA MẮT](#om-J-chan-dung-mat) — `om-J-chan-dung-mat.md`
 
 ---
 
@@ -380,6 +382,9 @@ Cột `Nguồn order` ghi: `<tên sheet> · <nhãn khối> · dòng <n>` — VD 
 
 > Sổ này trả lời: **khách là ai, sợ gì, ở nấc nào thì nghe được câu gì — và hook nào đã chứng minh thắng, hook nào đã chứng minh thua.**
 > ⚠️ §5 là phần đắt nhất của cả agent: rút từ **91 ad thật đã chấm**, không phải lý thuyết.
+>
+> **Phạm vi:** §1–§4 là dữ liệu **chuyên khoa MŨI**. ★ **§5 công thức hook và §6 cách viết hook mới dùng cho MỌI dịch vụ.**
+> Chuyên khoa **MẮT** → `om-J`. ⚠️ Khi chấm hook mắt, nói rõ: công thức §5 rút từ **ad mũi**, áp sang mắt là suy luận hợp lý chưa phải bằng chứng (`om-J` §0).
 
 ---
 
@@ -823,6 +828,23 @@ NHƯNG sheet Format mẫu chỉ định nghĩa tới L12.
 
 ---
 
+## 7. ★ KỊCH BẢN MẪU CÓ THẬT — TRA TRƯỚC KHI VIẾT
+
+> Khối có **thư viện kịch bản thật, mỗi format một file**. ⛔ **Luôn tra kịch bản mẫu của format đó trước khi viết mới** — khuôn cột, thuật ngữ dựng và thông số text lấy từ đó (`om-I`).
+
+**Mục lục:** `docs.google.com/spreadsheets/d/1g4ti7tIY0pLqu-Hv305tIVDjnU_qlMyL3lLUOOkkvlY` *(cột `Format` → cột `Link kịch bản`)*
+
+| Format | Kịch bản mẫu |
+|---|---|
+| `L01` | ⚠️ **TRỐNG** — chưa có mẫu. Dùng khuôn `L03` rút gọn, ghi rõ là khuôn mượn |
+| `L02` … `L12` | Có mẫu, tra qua mục lục trên |
+
+⚠️ **Kịch bản mẫu hiện có là của chuyên khoa MẮT (cắt mí).** Viết cho **mũi** thì mượn **khuôn** *(cột · nhịp · thuật ngữ · thông số text)*, ⛔ **không mượn nội dung y khoa** — chỉ định, mốc hồi phục, công nghệ của mắt khác hoàn toàn của mũi.
+
+⛔ **Không mượn con số từ kịch bản mắt sang mũi**: giá, thời gian mổ, mốc cắt chỉ, thời hạn bảo hành đều khác theo dịch vụ.
+
+---
+
 ## 6. ƯỚC THỜI GIAN QUAY
 
 | Format | Phút/clip (đã gồm set up) |
@@ -845,6 +867,12 @@ Cộng thêm **15 phút mỗi lần đổi bối cảnh**. Dùng để tính xem
 # om-E · VIẾT KỊCH BẢN & ĐẦU RA
 
 > Sổ này trả lời: **lời thoại viết thế nào, shot list ghi thế nào, bảng đầu ra có cột gì, và call sheet xếp ra sao.**
+>
+> ★ **ĐỌC `om-I` TRƯỚC SỔ NÀY.** Đầu ra có **hai tầng**:
+> `TẦNG 1` **phiếu order** — 1 dòng = 1 clip, 42 trường (§4 sổ này), cho quản lý & điều phối.
+> `TẦNG 2` **kịch bản chi tiết** — 1 dòng = 1 nhịp, theo **khuôn nhà** (`om-I` §2), cho editor & DOP.
+> ⛔ Không gộp hai tầng vào một bảng. Trường `LỜI THOẠI THEO MỐC GIÂY` ở §4 là **con trỏ** sang sheet kịch bản tầng 2, không phải chỗ nhét cả 25 nhịp.
+> §1–§3 dưới đây là **luật viết nội dung**; **khuôn trình bày** theo `om-I`.
 
 ---
 
@@ -1554,12 +1582,48 @@ CASE-02 · nam · 29 · CD4 · mũi thấp, đầu mũi to · ⛔ CHƯA CÓ CONS
 
 ---
 
-## 6. BẢNG GIÁ & CHÍNH SÁCH — CHƯA CÓ BẢN HIỆN HÀNH
+## 6. BẢNG GIÁ & CHÍNH SÁCH
+
+### 6a. MẮT / CẮT MÍ — có số từ kịch bản đang chạy
+
+> ⚠️ **Nguồn: kịch bản `L11` đang sản xuất**, không phải bảng giá chính thức từ khối sales.
+> → Dùng được để **viết nháp**, nhưng ⛔ **phải đối chiếu bảng giá hiện hành trước khi lên ads** (`om-G` L03).
+
+| Dịch vụ | Giá | Mô tả đi kèm trong kịch bản |
+|---|---|---|
+| **Cắt mí Plasma** | **8 triệu** | Công nghệ hạn chế sưng, hồi phục nhanh |
+| **Cắt mí 6D** | **12,8 triệu** | Chỉ Nano siêu mảnh 0,01mm |
+| **Cắt mí + tạo khoé** | **13,6 triệu** | Mắt trông dài, cân đối hơn |
+| **Cắt mí + cấy mỡ** | **17,9 triệu** | Mí rõ nét, đầy đặn, tươi trẻ |
+| **Nâng cung mày** | **8,8 triệu** | Loại bỏ da dư, trẻ hoá mắt |
+
+**Trọn gói gồm:** thăm khám · xét nghiệm · bác sĩ chuyên khoa trực tiếp thực hiện · ekip + phòng mổ vô khuẩn · chăm sóc hậu phẫu.
+
+### 6b. ★ BẢO HÀNH — BA MỨC KHÁC NHAU TRONG CÙNG HỆ THỐNG
+
+```
+⚠️ PHÁT HIỆN QUAN TRỌNG — ba con số đang cùng lưu hành:
+
+  "bảo hành nếp mí lên đến 3 NĂM"   ← kịch bản L11 mắt (cụ thể, khả tín nhất)
+  "bảo hành 10 NĂM"                 ← chân dung CD3 mũi
+  "bảo hành TRỌN ĐỜI"               ← nhiều hook mũi đang chạy
+
+→ Ba cái này KHÔNG THỂ cùng đúng cho cùng một dịch vụ.
+```
+
+**Cách agent xử:**
+- **Mắt** → dùng `3 năm` *(có nguồn cụ thể nhất)*, vẫn ghi `⚠️ đối chiếu văn bản`.
+- **Mũi** → ⛔ **không dùng số nào**. `[CHỜ XÁC NHẬN]`, viết *"chính sách bảo hành bằng văn bản"* không kèm số.
+- ⛔ **Không bao giờ dùng *"trọn đời"*** cho đến khi có văn bản xác nhận đúng chữ đó — đây là cờ 🔴 (`om-G` §2).
+
+⚠️ **Bảo hành theo dịch vụ, không theo hệ thống.** ⛔ Đừng lấy `3 năm` của mắt gán cho mũi.
+
+### 6c. MŨI & CÁC DỊCH VỤ KHÁC — CHƯA CÓ BẢN HIỆN HÀNH
 
 ```
 ⚠️ [CHỜ XÁC NHẬN] — ai cấp: khối vận hành / sales
 
-CHẶN: mọi phiếu format L11 (Dịch vụ — Giá/Sales/Chính sách) và mọi hook nấc A4.
+CHẶN: mọi phiếu format L11 và mọi hook nấc A4 của dịch vụ NGOÀI mắt.
 
 Cần cấp:
   · Bảng giá trọn gói hiện hành theo từng dịch vụ + từng mức
@@ -1569,11 +1633,11 @@ Cần cấp:
   · Chính sách trả góp (có/không, điều kiện)
 ```
 
-⚠️ **Hai con số đang lưu hành trong ads mà agent ⛔ KHÔNG được tự dùng lại:**
-- *"chỉ 31TR"* / *"31TR (39TR)"* — xuất hiện trong nhiều ad cũ, **chưa đối chiếu bảng giá hiện hành**
-- *"bảo hành trọn đời"* / *"bảo hành 10 năm"* — hai mức khác nhau trong cùng bộ dữ liệu → **chắc chắn có một cái sai**
+⚠️ **Con số đang lưu hành trong ads mũi mà agent ⛔ KHÔNG được tự dùng lại:**
+*"chỉ 31TR"* / *"31TR (39TR)"* — xuất hiện trong nhiều ad cũ, **chưa đối chiếu bảng giá hiện hành**. Bảo hành mũi: xem §6b.
 
-⛔ Lấy số từ hook cũ là cách sai phổ biến nhất. Hook cũ **không phải nguồn giá**.
+⛔ Lấy số từ hook cũ là cách sai phổ biến nhất. **Hook cũ không phải nguồn giá.**
+⚠️ Kịch bản `L11` **là** nguồn giá khả tín hơn hook — nhưng chỉ cho **đúng dịch vụ của kịch bản đó**.
 
 ---
 
@@ -1587,6 +1651,20 @@ Dùng khi điền cột `KHU VỰC` và khi cân nhắc `PORT` hook sang miền 
 | **BẮC** | ⚠️ Yếu hơn Nam — KPI pilot đặt mục tiêu *"≥40% ad đạt TỐT"*, tức hiện dưới mức đó. Nhiều ad TỐT ở Nam **chấm KÉM khi port sang Bắc**. |
 | **MIỀN TÂY** | Công thức riêng và rất mạnh: **"lên thành phố làm"** — *"chị em miền Tây không nâng mũi ở miền Tây mà rủ nhau lên Kangnam Sài Gòn"*. Nhân được sang các tỉnh phía Bắc. |
 | **VIỆT KIỀU** | Tệp riêng (Mỹ/Úc/Canada/Nhật/Hàn/Đài). Nỗi sợ riêng: **về nước ngắn ngày, sợ không kịp hồi phục và cắt chỉ**. |
+
+### ★ Bốn quyền lợi riêng cho tệp Việt kiều — có trong kịch bản thật
+
+Rút từ kịch bản `L02` và `L12`. Đây là **điểm bán mạnh mà hook mũi chưa dùng**:
+
+```
+① Cấp GIẤY XÁC NHẬN PHẪU THUẬT của bệnh viện
+② Hỗ trợ làm THỦ TỤC HẢI QUAN
+③ Hỗ trợ ĐƯA ĐÓN SÂN BAY
+④ Tư vấn ONLINE + hướng dẫn đặt lịch trước khi bay
+```
+
+⚠️ Bốn mục này đã dùng cho **mắt**; mũi chưa có hook nào khai thác. → Đây là **lỗ hổng đáng lấp**, và vì là quyền lợi dịch vụ *(không phải claim y khoa)* nên **sạch pháp chế**.
+⛔ Vẫn phải xác nhận bốn mục này còn áp dụng — `[CHỜ XÁC NHẬN]` khối vận hành.
 
 ⚠️ **Luật port:** một hook `TỐT` ở miền này ⛔ **không tự động `TỐT`** ở miền khác. Port thì **quay lại hook bằng giọng và bối cảnh miền đó**, giữ nguyên thân video (`om-E` §6).
 
@@ -1603,9 +1681,535 @@ Dùng khi điền cột `KHU VỰC` và khi cân nhắc `PORT` hook sang miền 
 | Kỹ thuật **tuyến bệnh viện** gắn địa chỉ clinic | §2 | 🔴 **CHẶN** — vượt phạm vi chuyên môn |
 | Dùng **ảnh/video khách** chưa có consent | §5 | 🔴 **CHẶN** |
 | Format **L13 / L14 / L15 / L16** | `om-D` §1 | 🟡 **HỎI LẠI** — chưa định nghĩa |
+| Format **L01** | `om-D` §7 | 🟡 **KHUÔN MƯỢN** — chưa có kịch bản mẫu, dùng `L03` rút gọn |
+| Giá **mắt / cắt mí** | §6a | 🟢 **CÓ SỐ NHÁP** — đối chiếu bảng giá hiện hành trước khi lên ads |
+| **Bảo hành mũi** (mọi con số) | §6b | 🔴 **CHẶN** — ba mức đang xung đột |
 | Nói **mốc hồi phục, thời gian mổ** | `om-G` §5 | 🟡 **HỎI LẠI** — cần BS duyệt |
 
-★ **Năm thứ cần xin để mở phần lớn các chặn trên:**
-`① danh sách BS đã xác minh` · `② bảng giá hiện hành` · `③ chính sách bảo hành bằng văn bản` · `④ số giấy phép đủ 7 cơ sở` · `⑤ định nghĩa format L13–L16`.
+★ **Sáu thứ cần xin để mở phần lớn các chặn trên:**
+`① danh sách BS đã xác minh` · `② bảng giá hiện hành các dịch vụ ngoài mắt` · `③ chính sách bảo hành bằng văn bản — ⚠️ ba mức đang xung đột, xem §6b` · `④ số giấy phép đủ 7 cơ sở` · `⑤ định nghĩa format L13–L16` · `⑥ kịch bản mẫu cho L01`.
 
-Agent **in năm dòng này vào khối `[CHỜ XÁC NHẬN]` mỗi lần xuất phiếu**, cho tới khi được cấp.
+Agent **in sáu dòng này vào khối `[CHỜ XÁC NHẬN]` mỗi lần xuất phiếu**, cho tới khi được cấp.
+
+⚠️ **Mục ③ là mục cấp bách nhất.** Ba con số bảo hành khác nhau đang **cùng chạy trên ads thật** — đây không chỉ là bất tiện nội bộ, mà là rủi ro pháp chế đang phát sinh (`om-G` §2, cờ 🔴).
+
+---
+
+<a id="om-I-khuon-kich-ban-nha"></a>
+
+## ⟦ om-I-khuon-kich-ban-nha.md ⟧
+
+# om-I · KHUÔN KỊCH BẢN CỦA NHÀ
+
+> Sổ này là **khuôn thật đang dùng** — rút từ 11 kịch bản sản xuất có thật của chuyên khoa mắt (cắt mí).
+> ⛔ **Agent viết theo khuôn này, KHÔNG tự nghĩ khuôn mới.** Editor đã quen đọc cột theo đúng thứ tự này.
+
+---
+
+## 1. ★ ĐẦU RA CÓ HAI TẦNG — ĐỪNG TRỘN
+
+Đây là điều quan trọng nhất của sổ.
+
+```
+TẦNG 1 — PHIẾU ORDER        1 dòng = 1 clip      → cho quản lý & điều phối
+         42 trường, 6 khối (om-E §4)
+         trả lời: clip này là gì, cho ai, chạy ô nào, ai duyệt, đo bằng gì
+
+TẦNG 2 — KỊCH BẢN CHI TIẾT  1 dòng = 1 NHỊP     → cho editor & DOP
+         khuôn nhà, 4–7 cột (§2 dưới)
+         trả lời: giây này đọc câu gì, hiện chữ gì, lấy footage nào
+```
+
+⛔ **Không gộp hai tầng vào một bảng.** Một clip `L03` có 20–25 nhịp; nhét 25 nhịp vào một ô là bảng không ai đọc được.
+★ **Agent xuất cả hai:** phiếu order một sheet, rồi **mỗi clip một sheet kịch bản riêng** — đúng như cách nhà đang làm *(mỗi format một file Google Sheet riêng, xem `om-D` §7)*.
+
+---
+
+## 2. KHUÔN CỘT — LÕI CHUNG + BIẾN THỂ
+
+### Lõi chung — bốn cột, mọi format đều có
+
+| Cột | Nội dung | ⛔ Luật |
+|---|---|---|
+| `STT` | Số nhịp. Dòng cuối ghi `THUMB` / `14thumb` / `10 thumb` | ⛔ Không bỏ dòng THUMB |
+| `VOICE` / `NỘI DUNG` | **Lời thoại đọc nguyên văn.** Kèm mốc giây trong footage gốc khi lấy tiếng thật: `1:03`, `3p02`, `0:39` | ⛔ Không viết mô tả thay lời thoại |
+| `TEXT` | Chữ hiện trên hình. **Ngắn hơn lời thoại rất nhiều** | ⛔ Không chép lại lời thoại |
+| `FOOTAGE` / `FT` / `SOURCE` / `HÌNH ẢNH` | Đường dẫn footage + **chỉ dẫn dựng** | ⛔ Không ghi *"thêm B-roll"* |
+
+### Biến thể theo format
+
+| Format | Cột đầy đủ |
+|---|---|
+| `L02` | `STT · TEXT · THIẾT KẾ · HÌNH ẢNH` *(không có cột voice — dùng voice AI đọc text)* |
+| `L03` | `TALK · NỘI DUNG · TEXT · FT · NOTE · FIX` ★ nhiều cột nhất |
+| `L04` `L05` `L09` | `STT · Voice · Text · Note` |
+| `L06` | `STT · ⟨nhịp⟩ · Nội dung · Text · Design · Link FT` |
+| `L07` | `STT · Nội dung · Text · Source · Note` |
+| `L08` | `⟨ ⟩ · Voice · Text · Source · Bối cảnh` |
+| `L10` | `STT · VOICE · TEXT · FOOTAGE · 1920x1080` |
+| `L11` `L12` | `STT · NỘI DUNG · TEXT · THIẾT KẾ · HÌNH ẢNH + MÔ TẢ` |
+
+⚠️ **`L01` chưa có kịch bản mẫu** — mục lục để trống ô link. Dùng khuôn `L03` rút gọn *(bỏ cột `TALK` và `FIX`)*, ghi rõ là khuôn mượn.
+
+### Hai cột đặc biệt, đừng bỏ
+
+| Cột | Vai trò |
+|---|---|
+| `TALK` *(L03)* | Tên QC + **tên file footage gốc** của buổi talk — vd `QC_Cắt mí_Talk bác sĩ Mỹ Combo cắt mí cấy mỡ mắt / C3524.MP4`. Một buổi talk cắt ra nhiều clip, cột này nối clip về buổi gốc |
+| `FIX` *(L03)* | ★ **Vòng feedback sửa.** Người duyệt ghi yêu cầu chỉnh vào đây *(“Rút ngắn text, chỉ để 2 dòng và cho to lên”, “Đổi ft khách già hơn 30-35 tuổi”)* |
+
+⚠️ **Agent để cột `FIX` TRỐNG.** Đó là chỗ của người duyệt, ⛔ agent không tự điền.
+
+---
+
+## 3. ★ THUẬT NGỮ DỰNG CỦA NHÀ — DÙNG ĐÚNG TỪ NÀY
+
+Editor đọc hiểu ngay những từ này. ⛔ Đừng diễn đạt lại bằng từ khác.
+
+| Thuật ngữ | Nghĩa |
+|---|---|
+| **`FT`** | Footage |
+| **`trám full`** | Chèn footage đè **kín khung** |
+| **`trám cận`** | Chèn footage đè, **cỡ cảnh cận** |
+| **`chia đôi, trám hình trên, bsi nói ở dưới`** | Chia khung ngang: hình minh hoạ trên, bác sĩ nói dưới |
+| **`chia đôi khung`** | Split screen |
+| **`cho bác sĩ xuống góc`** | Thu bác sĩ thành cửa sổ nhỏ ở góc (PiP) |
+| **`tách nền bác sĩ`** | Xoá phông, đặt bác sĩ đè lên footage khác |
+| **`khung box comment`** / **`bar text dạng cmt`** | Khung chữ kiểu bình luận TikTok *(xem §4 — có tool riêng)* |
+| **`Text nền FT`** / **`text trên nền`** | Chữ đặt trên footage |
+| **`biến đổi trc sau`** | Chuyển cảnh before → after |
+| **`ra beauty`** / **`FT Beauty`** | Footage quay đẹp sau phẫu thuật |
+| **`Tt xấu`** / **`FT đẹp`** | Footage tình trạng trước / kết quả sau |
+| **`dán nhãn 2026`** / **`tag chữ Mới`** | Gắn nhãn đồ hoạ lên hình |
+| **`multi pic`** / **`template nhiều hình ảnh`** | Lưới nhiều ảnh/video khách |
+
+### Giọng đọc
+- **`Voice AI`** dùng cho **câu hỏi** trong format talk — *"các câu hỏi dùng voice AI miền Nam"*.
+- Lời bác sĩ, lời khách → **giữ tiếng thật**, cắt theo mốc giây ghi ở cột `VOICE`.
+- Ghi rõ khi cần: *"Dùng voice AI nha"*, *"Cắt voice theo đoạn t note nhé"*.
+
+---
+
+## 4. ⛔ QUY ĐỊNH TEXT — THÔNG SỐ CỨNG
+
+> Nguồn: sheet *Quy định text* của khối. ⛔ Agent ghi đúng thông số này vào cột `THIẾT KẾ`, không tự chọn font/màu.
+
+| Hạng mục | Thông số |
+|---|---|
+| **Font** | `Roboto` |
+| **Màu** | `#114D8F` (xanh) · `#ef6103` (cam) · trắng + đen |
+| | ⚠️ **Nên dùng trắng – đen cho dễ nhìn** |
+| **Viền** | `20` cho trắng/đen · `30` cho xanh/cam |
+| **Cỡ chữ** | `15` · tỉ lệ `100%` |
+| **Subtext** | vị trí `X: 0` · `Y: -1050` · cỡ chữ `10` · tỉ lệ `100%` · phông nền theo thông số |
+| **Khung câu hỏi** | Tool: `imta.edu.vn/tool-tao-comment-tiktok` · kích cỡ `65%` · `X: -200` · `Y: -840` |
+| **Tỉ lệ khung hình** | `1920x1080` *(ghi ở `L10`)* |
+
+### ⛔ Hai điều cấm
+```
+- Không dùng khung
+- Không thiết kế
+```
+→ Text đặt thẳng trên footage. ⛔ Không dựng khung viền, không làm đồ hoạ trang trí.
+
+---
+
+## 5. NGUỒN FOOTAGE — GHI ĐƯỜNG DẪN THẬT
+
+Kịch bản thật ghi **đường dẫn tuyệt đối**, không ghi mô tả chung chung.
+
+| Loại nguồn | Dạng |
+|---|---|
+| **Ổ lưu trữ chính** | `Z:\KANGNAM 2026\CẮT MÍ\09.07 - Cắt mí Hải Linh\Phẫu thuật\C0940.MP4` |
+| **Thư mục case nhân vật** | `Z:\KANGNAM 2025\CASE NHÂN VẬT\Cắt mí\Mí\...` |
+| **NAS lưu tạm** | `\\10.195.55.58\Lưu tạm\...` · `\\10.195.55.98\Lưu Tạm\Mắt\...` |
+| **NAS chia sẻ** | `https://10.195.50.31:5001/sharing/...` · `https://10.195.0.30:5001/sharing/...` |
+| **Google Drive** | `https://drive.google.com/file/d/.../view` |
+
+**Quy ước ghi một dòng footage:**
+```
+<tên file>
+<đường dẫn thư mục>
+[mốc giây cần lấy]     vd: "từ 0:51"  ·  "Đoạn 0:27"  ·  "cắt 0s18 - 0s20"
+[chỉ dẫn xử lý]        vd: "Chỉnh đỡ vàng nhé"  ·  "Tăng speed"  ·  "zoom cận"
+```
+
+⚠️ **Agent không biết ổ Z: có file gì.** → Ghi **mô tả footage cần** + `[CHỜ ĐIỀU PHỐI CẤP ĐƯỜNG DẪN]`, ⛔ **không bịa đường dẫn**.
+Ví dụ đúng:
+```
+FT thăm khám — bác sĩ đo vẽ mí, cận tay bác sĩ   [CHỜ ĐIỀU PHỐI CẤP ĐƯỜNG DẪN]
+```
+
+---
+
+## 6. DÒNG THUMB — BẮT BUỘC
+
+Mọi kịch bản kết bằng một dòng thumbnail.
+
+```
+STT     TEXT                              THIẾT KẾ / HÌNH ẢNH
+THUMB   CẮT MÍ 8 TRIỆU                    Banner · ảnh mí đẹp
+        CÓ PHÁT SINH THÊM?
+
+THUMB   SINH VIÊN ĐI CẮT MÍ               Mắt xấu đẹp
+        7 CỦ KHOAI
+
+THUMB   CẮT MÍ 6D Kangnam                 Công nghệ · mẫu mắt đẹp · text
+        CÔNG NGHỆ MỚI NHẤT 2026
+```
+
+**Luật:** text thumb **≤ 2 dòng**, in hoa, **lặp lại hook** chứ không viết ý mới.
+
+---
+
+## 7. KHỐI "TỐI ƯU ⟨VÙNG⟩" — VIẾT LẠI THEO GIỌNG MIỀN
+
+Kịch bản thật có khối phụ ở cuối: **`TỐI ƯU MIỀN TÂY`** — cùng nội dung, viết lại bằng giọng địa phương.
+
+| Bản chuẩn | Bản miền Tây |
+|---|---|
+| *"Cắt mí báo giá 8 triệu, liệu đến lúc làm có phải trả thêm?"* | *"Cắt mí báo giá 8 triệu, tới lúc làm có tốn thêm tiền **hông**?"* |
+| *"Mức giá này đã bao gồm trọn gói"* | *"Giá này là trọn gói luôn **nha**!"* |
+| *"Vậy bạn cắt mí hết bao nhiêu? Inbox nhận báo giá ngay!"* | *"Vậy bạn cắt mí hết bao nhiêu tiền? Inbox **liền tay**, nhận báo giá chi tiết **nha**!"* |
+
+**Dấu hiệu giọng miền Tây:** `nha` · `nghen` · `hông` · `liền tay` · `đó nghen` · `luôn`.
+
+⛔ **Chỉ viết lại phần `VOICE` và `TEXT`.** Footage, thiết kế, thứ tự nhịp giữ nguyên — cùng một bản dựng, chỉ thay tiếng.
+→ Order ghi `KHU VỰC = MIỀN TÂY` → agent xuất **thêm** khối này, không thay bản chuẩn.
+
+---
+
+## 8. NHỊP KỂ THEO FORMAT — RÚT TỪ KỊCH BẢN THẬT
+
+### `L06` Review — có nhãn nhịp rõ ràng
+```
+INTRO      → hook, gọi tình trạng   "Sinh viên đi cắt mí 7 củ khoai thì sẽ như thế nào?"
+TÌNH TRẠNG → mắt trước, nói khuyết điểm
+GIỚI THIỆU → vì sao chọn nơi này
+BIẾN ĐỔI   → mốc ngày 1-2 · ngày 5 · ngày 7
+ĐẸP        → kết quả, cảm nhận
+CTA        → mời nhắn tin
+THUMB
+```
+
+### `L07` Hành trình — kể theo mốc thời gian của ca
+```
+HOOK → tình trạng (có mốc giây tiếng thật) → GIẢI PHÁP (bác sĩ chỉ định)
+→ thực hiện (45P) → ngày 3 → ngày 7 → biến đổi xấu/đẹp → CTA → THUMB
+```
+
+### `L09` `L12` Công nghệ / Local — liệt kê luận điểm
+```
+hook công nghệ → từng luận điểm một nhịp (mỗi nhịp 1 text ngắn + 1 FT)
+→ chốt uy tín → CTA → THUMB
+```
+
+### `L10` Quy trình — đánh số bước
+```
+mở (tên quy trình + chuẩn) → B1 đo vẽ → B2 sát khuẩn → B3 gây tê
+→ B4 tạo đường cắt → B5 xử lý da/mỡ → B6 khâu → chốt chuẩn → CTA
+```
+
+### `L11` Giá — hỏi giá, giải thích, liệt kê, chốt
+```
+hook câu hỏi giá → mức giá cơ bản gồm gì → ưu điểm công nghệ
+→ trọn gói gồm những gì → BẢNG GIÁ các mức → "không phải đắt nhất là đẹp nhất"
+→ CTA hỏi giá → THUMB → [khối TỐI ƯU MIỀN TÂY]
+```
+
+---
+
+## 9. ⚠️ ĐỐI CHIẾU VỚI CỔNG B — ĐỌC KỸ MỤC NÀY
+
+> **Kịch bản thật đang chứa nhiều câu mà `om-G` gắn cờ.** Đây không phải lỗi của `om-G`, cũng không phải lý do để nới `om-G`.
+
+| Câu trong kịch bản thật | Cờ | Điểm L |
+|---|---|---|
+| *"Không đau - Không sưng bầm"* **đặt làm TEXT thương hiệu** | 🟡 | `L03` — chỉ được là lời khách kể |
+| *"VÔ KHUẨN 100%"* | 🟡 | `L04` — khẳng định tuyệt đối |
+| *"Đường sẹo 'tàng hình'"* | 🟡 | `L03` — cam kết kết quả |
+| *"7 NGÀY LÀ ĐẸP"* · *"10 ngày là đẹp"* · *"Đẹp ngay trong lần đầu thực hiện"* | 🟡 | `L03` — hứa mốc thời gian/kết quả |
+| *"15+ NĂM KINH NGHIỆM"* · *"20.000+ KHÁCH HÀNG"* · *"Hàng nghìn khách hàng"* | 🔴 | `L04` — con số cần nguồn |
+| *"bảo hành nếp mí lên đến 3 năm"* | 🟢 | hợp lệ **nếu** khớp văn bản — xem `om-H` §6 |
+| Tên bác sĩ: *"Dr. Mard Nguyen"* · *"Dr. Hải"* | 🔴 | `L01` `L02` — cần `om-H` xác minh |
+| Tên khách thật: *Linh Chi · Hải Linh · Kim Ngân · Bảo Yến · MC Hà Trinh* | 🔴 | `L05` — cần consent |
+| *"Gây tê… giúp khách hàng không cảm thấy đau đớn nào"* | 🟡 | `L03` — tuyệt đối hoá |
+| *"Quy trình chuẩn Bộ Y tế"* | 🟢 | hợp lệ nếu có căn cứ |
+
+### ⛔ Agent xử thế nào
+
+1. **Viết theo khuôn nhà** *(cột, thuật ngữ, thông số text)* — khuôn là của nhà, agent theo.
+2. **Vẫn chấm cờ theo `om-G`** — nội dung là việc của cổng B, ⛔ không vì *"kịch bản cũ viết thế"* mà bỏ qua.
+3. **Nêu kèm dẫn chứng:** *"Câu này giống câu đang dùng ở kịch bản `L09` nhịp 2 — nhưng vẫn là cờ 🟡 `L03`. Đề xuất: đổi `KHÔNG ĐAU – KHÔNG SƯNG BẦM` thành `Hạn chế sưng đau`."*
+4. ⛔ **Không tự ý sửa kịch bản cũ.** Agent chỉ gắn cờ cho **clip mới** mình viết.
+
+> ⚠️ **Nói rõ với người order một lần:** nhiều ad đang chạy có cờ. Việc rà lại kho cũ là **quyết định của khối + pháp chế**, không phải việc agent tự làm.
+
+---
+
+## 10. TỰ KIỂM KỊCH BẢN TRƯỚC KHI GỬI
+
+```
+[ ] Đúng khuôn cột của format đó chưa (§2)?
+[ ] Cột VOICE là lời thoại đọc nguyên văn, không phải mô tả?
+[ ] Lấy tiếng thật thì có ghi mốc giây chưa?
+[ ] Cột TEXT có ngắn hơn VOICE không — hay lỡ chép lại?
+[ ] Dùng đúng thuật ngữ nhà (trám full · chia đôi · ra beauty) chưa (§3)?
+[ ] Cột THIẾT KẾ có ghi đúng thông số text (Roboto · màu · viền · cỡ) chưa (§4)?
+[ ] Footage: ghi mô tả + [CHỜ ĐIỀU PHỐI CẤP ĐƯỜNG DẪN] — có bịa đường dẫn Z: không (§5)?
+[ ] Có dòng THUMB chưa, text ≤2 dòng, in hoa (§6)?
+[ ] KHU VỰC = MIỀN TÂY thì đã thêm khối TỐI ƯU chưa (§7)?
+[ ] Cột FIX để TRỐNG cho người duyệt chưa (§2)?
+[ ] Đã chấm cờ om-G cho từng nhịp chưa (§9)?
+```
+
+---
+
+<a id="om-J-chan-dung-mat"></a>
+
+## ⟦ om-J-chan-dung-mat.md ⟧
+
+# om-J · CHÂN DUNG KHÁCH HÀNG — CHUYÊN KHOA MẮT
+
+> Sổ này là **module dịch vụ**, song song với `om-C` *(mũi)*. Phương pháp chấm hook, luật 5A, công thức thắng/thua nằm ở `om-C` §5–§6 — ⛔ **không lặp lại ở đây**.
+>
+> ⚠️ **ĐỌC MỤC §0 TRƯỚC.** Khác với `om-C` *(rút từ sheet chân dung đã chốt + 91 ad đã chấm)*, sổ này **chưa có sheet chân dung chính thức cho mắt**. Phần lớn nội dung là **suy ra từ kịch bản thật và các dòng order mắt** — đã ghi rõ nguồn từng mục.
+
+---
+
+## 0. ⚠️ NGUỒN & ĐỘ TIN CẬY — ĐỌC TRƯỚC KHI DÙNG
+
+| Ký hiệu | Nghĩa |
+|---|---|
+| ✅ **DỮ KIỆN** | Có trong order hoặc kịch bản thật — dùng được ngay |
+| 🔶 **SUY RA** | Agent suy từ kịch bản/order — dùng được để viết nháp, **nên xác nhận** |
+| ⚠️ **CHƯA CÓ DỮ LIỆU** | Không có gì để dựa — ⛔ không dùng làm căn cứ |
+
+```
+⚠️ [CHỜ XÁC NHẬN] — ai cấp: khối Ads/Content
+
+CẦN: sheet CHÂN DUNG KHÁCH HÀNG MẮT, đúng cấu trúc như sheet mũi
+     (mã · tên · nhân khẩu · câu khách gõ · nỗi sợ chi phối · khát khao thật
+      · rào cản · trigger · thông điệp thắng · format ưu tiên · tỷ trọng · LTV)
+
+CẦN: cột HIỆU QUẢ cho các ad mắt đã chạy — hiện order mắt CHƯA có dòng nào
+     được chấm TỐT/BT/KÉM, nên om-C §5 chưa có bằng chứng riêng cho mắt.
+```
+
+⚠️ **Hệ quả quan trọng:** công thức hook thắng/thua ở `om-C` §5 rút từ **91 ad mũi**. Áp sang mắt là **suy luận hợp lý, chưa phải bằng chứng**. Agent nói rõ điều này khi chấm hook mắt.
+
+---
+
+## 1. ⚠️ ÁNH XẠ MÃ CD — CÓ MỘT CHỖ LỆCH, CẦN BẠN CHỐT
+
+`om-B` §2 quy định giữ nguyên mã `CD1`–`CD6` cho mọi dịch vụ để so sánh hiệu suất chéo tuyến. Áp sang mắt:
+
+| Mã | Logic chung (`om-B` §2) | Mắt | Nguồn |
+|---|---|---|---|
+| `CD1` | Khuyết điểm cơ bản | **Mắt · Khuyết điểm** | ✅ có trong order |
+| `CD2` | Làm nghề hình ảnh | **Mắt · Hot Face** | ✅ case MC, KOC trong kịch bản |
+| `CD3` | Đã làm, cần sửa | **Mắt · Sửa lại** | ✅ hook `L03` nói thẳng về nhóm này |
+| `CD4` | Nam giới | **Mắt · Nam giới** | ✅ case nam trong kịch bản `L04` |
+| `CD5` | ~~Phong thuỷ / tướng số~~ → **Lão hoá** | **Mắt · Lão hoá** | ⚠️ **LỆCH — xem dưới** |
+| `CD6` | Ca khó, bệnh lý | **Mắt · Sụp mí & bệnh lý** | ✅ có trong order |
+
+### ⚠️ Chỗ lệch ở `CD5`
+
+```
+Mũi  : CD5 = Phong thuỷ / tướng số
+Mắt  : không có dữ liệu nào về phong thuỷ mắt
+       NHƯNG order có tệp "Mắt - Lão hóa" rất rõ, và kịch bản có case U50
+
+→ Agent tạm xếp "Mắt · Lão hoá" vào CD5, và ĐÁNH DẤU LỆCH.
+```
+
+**Hệ quả nếu để lệch:** báo cáo so `CD5` giữa mũi và mắt sẽ **so hai tệp khác hẳn nhau** — phong thuỷ vs lão hoá. Đây là chính cái mà quy ước mã chung muốn tránh.
+
+**Ba hướng xử, cần khối Ads chốt:**
+
+| Hướng | Được | Mất |
+|---|---|---|
+| **A** · Giữ `CD5 = Lão hoá` cho mắt | Đủ 6 tệp, khớp order | ⛔ Vỡ so sánh chéo tuyến ở `CD5` |
+| **B** · Mở mã mới `CD7 = Lão hoá`, để `CD5` trống cho mắt | Giữ nguyên so sánh chéo | Phá quy ước *"không đẻ mã mới"* |
+| **C** · Gộp Lão hoá vào `CD6` *(cùng là nhóm chức năng/tuổi cao)* | Không đẻ mã, không vỡ so sánh | `CD6` thành hai tệp tâm lý khác nhau trong một mã |
+
+⚠️ **Agent đang dùng hướng A** và in cảnh báo mỗi lần xuất phiếu `CD5` mắt. ⛔ Không tự chuyển hướng khác khi chưa được chốt.
+
+---
+
+## 2. SÁU CHÂN DUNG MẮT
+
+### CD1 · Mắt · Khuyết điểm — *trụ cột*
+| | |
+|---|---|
+| **Ai** 🔶 | 20–40 tuổi · nhân viên văn phòng, bán hàng, sinh viên · thu nhập trung bình |
+| **Tình trạng** ✅ | Mắt một mí · mí lót · mắt nhỏ · **mắt buồn** · nhiều nếp mí · nếp quạt góc mắt trong · hai mắt không đều |
+| **Gõ gì** ✅ | *"Cắt mí báo giá 8 triệu, đến lúc làm có phát sinh thêm không?"* · *"Cắt mí bao lâu thì đẹp?"* · *"Tạo khoé xong mắt có bị sẹo không?"* |
+| **⛔ Nỗi sợ chi phối** ✅ | **Sợ chi phí phát sinh** *(nỗi sợ số 1 — xuất hiện ở cả order và kịch bản `L11`)* · sợ sẹo ở góc mắt trong · sợ sưng lâu nghỉ làm |
+| **Khát khao** ✅ | Nếp mí **rõ nét, tự nhiên** · mắt to, có điểm nhấn · *"mắt có hồn, tươi tắn"* |
+| **Rào cản** 🔶 | Ngân sách · khó xin nghỉ · chưa biết mình cần làm gì trong nhiều phương án |
+| **⚡ Trigger** ✅ | **Bảng giá trọn gói nói rõ gồm gì** · mốc *30 phút thực hiện · 7 ngày cắt chỉ · 10 ngày đẹp* · case giống mình |
+| **Thông điệp thắng** 🔶 | *"Cắt mí đúng tình trạng — nếp mí rõ nét, hồi phục nhanh, giá trọn gói không phát sinh"* |
+| **Format ưu tiên** ✅ | `L11` giá *(đang là format mạnh nhất của mắt)* · `L04` B/A · `L06` review · `L01` talk hỏi đáp |
+
+#### ★ Lát cắt SINH VIÊN trong CD1 — ✅ có kịch bản riêng
+Không phải chân dung riêng, mà là **lát cắt theo ngân sách & thời điểm**:
+- **Giọng:** trẻ, tự trào — *"Sinh viên đi cắt mí 7 củ khoai thì sẽ như thế nào?"* · *"sau 7749 lần lướt review"*
+- **Thời điểm:** ⚡ **kỳ nghỉ hè** — *"tranh thủ kì nghỉ hè là tôi đi cắt mí ngay"*
+- **Trigger riêng:** trả góp · mức giá thấp nhất trong bảng
+- ⛔ **Target 18+**, ⛔ không dùng case dưới 18 tuổi
+
+### CD2 · Mắt · Hot Face
+| | |
+|---|---|
+| **Ai** ✅ | MC, KOC, người làm nghề hình ảnh lâu năm · *"đầu tư gì cho bản thân sau 10 năm vào nghề"* |
+| **⛔ Nỗi sợ** 🔶 | Sợ mắt **lên hình thấy nếp nhăn** · sợ sưng lỡ job · sợ làm xong trông khác đi, mất nhận diện |
+| **Khát khao** ✅ | Mắt **không già đi theo nghề** · lên hình tươi, có hồn |
+| **⚡ Trigger** ✅ | Case người cùng nghề · mốc hồi phục ngắn · bác sĩ hiểu *"gu thẩm mỹ Á Đông"* |
+| **Format ưu tiên** ✅ | `L07` hành trình *(kịch bản thật dùng đúng format này cho nhóm này)* · `L05` biến đổi |
+| **⛔ Pháp chế** | Target 18+ · ⛔ không nêu tên người nổi tiếng · **consent bắt buộc** |
+
+### CD3 · Mắt · Sửa lại — ✅ *tệp có hook mạnh nhất trong kịch bản*
+| | |
+|---|---|
+| **Ai** ✅ | **Đã cắt mí rồi nhưng chưa hài lòng** |
+| **Gõ gì** ✅ | *"Tại sao cắt mí rồi nhưng mắt vẫn chưa đẹp và trẻ như mong muốn?"* · *"Tại sao có nếp mí rõ mà mắt vẫn nhỏ, chưa có điểm nhấn?"* · *"Có mí nhưng mắt vẫn chưa đẹp, bác sĩ khuyên gì?"* |
+| **⛔ Nỗi sợ** 🔶 | Sợ sửa nữa vẫn không đẹp · sợ đã tiêu tiền vô ích · sợ không ai chỉ ra được vấn đề thật |
+| **Khát khao** ✅ | **Hiểu vì sao lần trước chưa đẹp** — nhóm này muốn *lời giải thích* trước khi muốn *dịch vụ* |
+| **★ Insight đắt nhất** ✅ | Vấn đề thường **không ở nếp mí** mà ở: tương quan cung mày · hốc mắt sâu/thiếu mỡ · góc mắt trong–ngoài · da chùng. → *"cắt mí đơn thuần không giải quyết tất cả"* |
+| **⚡ Trigger** ✅ | **Bác sĩ phân tích đúng tình trạng của mình** · chỉ định cụ thể cho từng ca · *"không phải ai cắt mí cũng làm combo"* |
+| **Format ưu tiên** ✅ | **`L03` bác sĩ phân tích** *(chủ lực — giống `CD3` mũi)* · `L01` talk hỏi đáp |
+
+### CD4 · Mắt · Nam giới
+| | |
+|---|---|
+| **Ai** ✅ | Nam, mắt một mí / nếp quạt góc mắt trong |
+| **⛔ Nỗi sợ** ✅ | **Sợ bị đánh giá vì đi thẩm mỹ** — hook thật mở bằng đúng nỗi sợ này: *"Đàn ông không có quyền làm đẹp?"* · sợ mất nét nam tính |
+| **Khát khao** ✅ | *"x2 sự menly"* · mắt có hồn, tươi tắn · **tầm nhìn thoáng hơn** *(lợi ích chức năng — nam giới nhận lý do này dễ hơn lý do thẩm mỹ)* |
+| **⚡ Trigger** ✅ | Case nam **giống mình**, ưu tiên **góc chính diện** · B/A rõ |
+| **Format ưu tiên** ✅ | `L04` B/A góc chính diện · `L06` review |
+| ⚠️ **Lưu ý viết** | Nhóm này thuyết phục bằng **chức năng + sự tự nhiên**, ⛔ không bằng từ ngữ thẩm mỹ nữ tính |
+
+### CD5 · Mắt · Lão hoá — ⚠️ *mã đang LỆCH, xem §1*
+| | |
+|---|---|
+| **Ai** ✅ | U40–U60 · order gọi là *"Mắt - Lão hóa"*; kịch bản có case U50 |
+| **Tình trạng** ✅ | **Bọng mỡ** · da chùng, da dư · hốc mắt trũng · *"già trước tuổi"* · mắt trông mệt mỏi |
+| **Gõ gì** ✅ | *"Bệnh huyết áp hoặc tiểu đường nhẹ có cắt mí được không?"* |
+| **⛔ Nỗi sợ** ✅ | ★ **Sợ nguy hiểm vì tuổi cao, bệnh nền** *(nỗi sợ riêng của nhóm này — không nhóm nào khác có)* · sợ hồi phục lâu |
+| **Khát khao** ✅ | Trông **tươi hơn, đỡ mệt mỏi** — ⛔ **không phải "trẻ như gái 20"**. Kịch bản thật dùng *"trẻ ra 5 tuổi"*, *"cải thiện đôi mắt tươi trẻ"* |
+| **⚡ Trigger** ✅ | Case **cùng độ tuổi** · bác sĩ nói rõ về bệnh nền · cắt mí dưới / lấy bọng mỡ · nâng cung mày |
+| **Dịch vụ** ✅ | Cắt mí dưới · lấy mỡ bọng mắt · cấy mỡ trẻ hoá · nâng cung mày · cắt mí 6D trên dưới |
+| **Format ưu tiên** ✅ | `L04` B/A · `L01` talk hỏi đáp *(trả lời câu bệnh nền)* |
+| **⛔ Pháp chế** | 🔴 Câu về **bệnh nền phải do BS duyệt** — đây là chỉ định y khoa, ⛔ agent không tự trả lời *"được/không được"* |
+
+### CD6 · Mắt · Sụp mí & bệnh lý
+| | |
+|---|---|
+| **Ai** ✅ | Sụp mí *(ptosis)* · mắt hai bên không đều · ảnh hưởng **tầm nhìn**, không chỉ thẩm mỹ |
+| **Tình trạng** ✅ | Sụp mi · da dư che tầm nhìn · nếp quạt góc mắt trong nặng che phần hồ lệ |
+| **⛔ Nỗi sợ** 🔶 | Sợ không sửa được · sợ ảnh hưởng chức năng mắt · sợ hai bên vẫn không đều sau mổ |
+| **Khát khao** 🔶 | **Mắt mở bình thường, hai bên đều** — giống `CD6` mũi: muốn *bình thường*, không cần *đẹp nhất* |
+| **⚡ Trigger** ✅ | Bác sĩ **khám và chỉ ra cơ chế** · kết hợp chỉnh sụp mí + cắt mí · case giống hệt mình |
+| **Format ưu tiên** ✅ | `L03` phân tích · `L04` B/A |
+| **⛔ Pháp chế** | 🔴 Sụp mí là **bệnh lý** → ⛔ không hứa kết quả, ⛔ không nói về chức năng thị lực nếu BS chưa duyệt · **consent bắt buộc** |
+
+---
+
+## 3. HÀNH TRÌNH 5A — MẮT
+
+🔶 **Toàn bộ mục này là SUY RA** từ order mắt + kịch bản. ⚠️ Chưa có sheet 5A mắt chính thức *(sheet 5A hiện có là của mũi)*.
+
+| Nấc | Khách đang nghĩ | ⛔ Nỗi sợ chi phối | Nội dung phải có | CTA chuẩn |
+|---|---|---|---|---|
+| **A1 · AWARE** | *"Mắt mình buồn/nhỏ/nhiều nếp mí — có cách nào không?"* | Không biết mắt mình thuộc tình trạng gì | So sánh các tình trạng mắt trên cùng khuôn mặt · talk chủ đề rộng | *"Xem mắt bạn thuộc kiểu nào"* |
+| **A2 · APPEAL** | *"Nên cắt mí thường, 6D, hay phải làm combo?"* ✅ | Sợ chọn sai phương án · sợ làm rồi vẫn chưa đẹp | **Phân biệt các phương án theo tình trạng** · *"không phải ai cắt mí cũng làm combo"* · case B/A | *"Gửi ảnh mắt — bác sĩ chỉ ra bạn cần chỉnh gì"* |
+| **A3 · ASK** | *"Giá bao nhiêu, có phát sinh? Bao lâu đi làm lại được? Có sẹo không?"* ✅ | ★ **Sợ chi phí phát sinh** · sợ sẹo · sợ sưng lâu · *(CD5)* sợ bệnh nền | **Bảng giá trọn gói nói rõ gồm gì** · mốc 30 phút – 7 ngày – 10 ngày · câu trả lời về sẹo · FAQ bệnh nền | *"Inbox nhận báo giá theo tình trạng"* |
+| **A4 · ACT** | *"Chốt, nhưng chờ ưu đãi tốt"* ✅ | Sợ hết suất ưu đãi · sợ chi phí cao | Ưu đãi có hạn **số suất thật** · thăm khám 0đ · checklist trước mổ | *"Inbox giữ suất / giữ lịch"* |
+| **A5 · ADVOCATE** | *"Kiêng gì, bao giờ cắt chỉ, bao giờ trang điểm lại được?"* | Kiêng phức tạp · không rõ mốc tái khám | Hướng dẫn hậu phẫu · mốc cắt chỉ · dấu hiệu cần quay lại | *"Lưu video — nhắn nếu cần hỗ trợ hậu phẫu"* |
+
+⚠️ **Khác biệt rõ nhất so với mũi:** ở mũi, nấc `A3` nỗi sợ lớn nhất là *"không ai chịu trách nhiệm"*; ở mắt là **chi phí phát sinh**. → Hook mắt ở `A3` nên mở bằng **giá/phát sinh**, hook mũi ở `A3` nên mở bằng **bảo hành/trách nhiệm**.
+
+---
+
+## 4. ★ TỪ VỰNG TÌNH TRẠNG — DÙNG ĐÚNG TỪ KHÁCH DÙNG
+
+Thành phần ① của công thức thắng là **gọi đúng tình trạng** (`om-C` §5). Đây là từ vựng mắt, lấy từ kịch bản thật:
+
+```
+MÍ        mắt một mí · mí lót · nhiều nếp mí · nếp mí không rõ · nếp mí rẻ quạt
+KÍCH CỠ   mắt nhỏ · mắt buồn · mắt thiếu điểm nhấn · hai mắt không đều
+GÓC MẮT   nếp quạt góc mắt trong · góc mắt sếch · góc mắt hẹp
+DA & MỠ   da chùng · da dư · bọng mỡ · hốc mắt trũng · hốc mắt sâu · thiếu mỡ mí
+CHỨC NĂNG sụp mí · da che tầm nhìn
+TUỔI      già trước tuổi · mắt mệt mỏi · nếp nhăn quanh mắt · chân chim
+```
+
+⛔ **Đừng dùng từ chuyên môn khách không gõ:** *ptosis* · *blepharoplasty* · *cân cơ nâng mi*.
+⛔ **Đừng dùng tính từ chung chung** *(kiểu `H1`)*: *"mắt đẹp hút hồn"* · *"ánh nhìn cuốn hút"* · *"đôi mắt biết nói"*.
+
+---
+
+## 5. DỊCH VỤ & GIÁ MẮT
+
+Giá: `om-H` §6a *(có số nháp từ kịch bản `L11` — ⚠️ đối chiếu bản chính thức trước khi lên ads)*.
+
+| Dịch vụ | Giải quyết tình trạng | Chân dung chính |
+|---|---|---|
+| **Cắt mí Plasma** · 8tr | Mắt một mí, mí lót, nếp mí không rõ | `CD1` |
+| **Cắt mí 6D** · 12,8tr | Như trên, hồi phục nhanh hơn | `CD1` `CD2` |
+| **Cắt mí + tạo khoé** · 13,6tr | Nếp quạt góc mắt trong, mắt ngắn | `CD1` `CD3` `CD4` |
+| **Cắt mí + cấy mỡ** · 17,9tr | Hốc mắt trũng, thiếu mỡ, da chùng | `CD3` `CD5` |
+| **Nâng cung mày** · 8,8tr | Da dư, tương quan cung mày | `CD5` |
+| **Cắt mí dưới / lấy bọng mỡ** · `[CHỜ XÁC NHẬN]` | Bọng mỡ, lão hoá | `CD5` |
+| **Chỉnh sụp mí** · `[CHỜ XÁC NHẬN]` | Sụp mí | `CD6` |
+
+**Mốc thời gian ✅** *(từ kịch bản — vẫn cần BS duyệt khi đưa vào clip mới)*: 30 phút thực hiện *(cắt mí)* · 45 phút *(6D trên dưới)* · **7 ngày cắt chỉ** · **10 ngày vào form**.
+**Bảo hành nếp mí: 3 năm** — xem `om-H` §6b, ⛔ không gán số này cho dịch vụ khác.
+
+---
+
+## 6. LỖ HỔNG PHỄU MẮT — CHƯA ĐỦ DỮ LIỆU ĐỂ DỰNG MA TRẬN
+
+Order hiện có **9 dòng mắt**, phân bố:
+
+| Nấc | CD1 Khuyết điểm | CD5 Lão hoá | CD6 Sụp mí |
+|---|---|---|---|
+| A2 · APPEAL | 1 | — | 1 |
+| A3 · ASK | 1 | 2 | 1 |
+| A4 · ACT | 1 | 1 | 1 |
+
+**Bốn điều đọc ra ngay:**
+1. ⚠️ **`CD2` · `CD3` · `CD4` đang bằng 0 trong order** — dù `CD3` là tệp có **hook mạnh nhất** trong kịch bản thật *(`L03`)*, và `CD4` đã có case quay xong. → **Lỗ hổng đáng lấp nhất.**
+2. ⚠️ **`A1` và `A5` trống hoàn toàn** — giống hệt tình trạng của mũi.
+3. **`A4` phụ thuộc hoàn toàn vào ưu đãi/sự kiện** — cả 3 dòng `A4` đều là hội thảo/sự kiện giảm giá. Rủi ro: hết sự kiện là hết content `A4`.
+4. ⚠️ **Chưa dòng mắt nào có cột `HIỆU QUẢ`** → chưa biết hook mắt nào thắng.
+
+⛔ **Chưa đề xuất tỷ trọng sản lượng cho mắt.** Tỷ trọng của mũi *(CD1 ~50% · CD3+CD6 ~25% · …)* rút từ 91 ad đã chấm; mắt chưa có cơ sở tương đương → `[CHỜ XÁC NHẬN]` khối Ads.
+
+---
+
+## 7. BỐN VIỆC NÊN LÀM — ƯU TIÊN THEO ĐÒN BẨY
+
+| # | Việc | Vì sao |
+|---|---|---|
+| ① | **Mở tệp `CD3` Mắt · Sửa lại** | Có **4 hook thật đã viết sẵn** trong kịch bản `L03`, format chủ lực đã rõ, mà order chưa có dòng nào |
+| ② | **Mở tệp `CD4` Mắt · Nam giới** | Đã có case quay xong *(“Đàn ông không có quyền làm đẹp?”)*, chỉ cần dựng |
+| ③ | **Lấp `A5`** | Tệp `CUST` đã có, chi phí thấp nhất, mở đường cross-sell mắt ↔ mũi ↔ hàm |
+| ④ | **Chấm số cho ad mắt** | Không có cột `HIỆU QUẢ` thì `om-C` §5 mãi không có bằng chứng riêng cho mắt |
+
+---
+
+## 8. TỰ KIỂM KHI VIẾT CHO MẮT
+
+```
+[ ] Đã gọi đúng tình trạng bằng từ khách dùng chưa (§4)?
+[ ] Phiếu CD5 đã in cảnh báo mã đang LỆCH chưa (§1)?
+[ ] Câu về BỆNH NỀN có để BS duyệt chưa — hay lỡ tự trả lời được/không (§2 CD5)?
+[ ] Câu về SỤP MÍ có hứa kết quả hay nói về thị lực không (§2 CD6)?
+[ ] Giá lấy từ om-H §6a và đã ghi "đối chiếu bản chính thức" chưa?
+[ ] Mốc 30 phút / 7 ngày / 10 ngày đã ghi cần BS duyệt chưa?
+[ ] Bảo hành: dùng "3 năm" cho mắt, ⛔ KHÔNG gán sang dịch vụ khác?
+[ ] Lát cắt sinh viên đã ghi target 18+ chưa (§2 CD1)?
+[ ] Khi chấm hook mắt, đã nói rõ công thức om-C §5 rút từ ad MŨI chưa (§0)?
+```

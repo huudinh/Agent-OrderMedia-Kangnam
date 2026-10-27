@@ -2,6 +2,9 @@
 
 > Sổ này trả lời: **khách là ai, sợ gì, ở nấc nào thì nghe được câu gì — và hook nào đã chứng minh thắng, hook nào đã chứng minh thua.**
 > ⚠️ §5 là phần đắt nhất của cả agent: rút từ **91 ad thật đã chấm**, không phải lý thuyết.
+>
+> **Phạm vi:** §1–§4 là dữ liệu **chuyên khoa MŨI**. ★ **§5 công thức hook và §6 cách viết hook mới dùng cho MỌI dịch vụ.**
+> Chuyên khoa **MẮT** → `om-J`. ⚠️ Khi chấm hook mắt, nói rõ: công thức §5 rút từ **ad mũi**, áp sang mắt là suy luận hợp lý chưa phải bằng chứng (`om-J` §0).
 
 ---
 

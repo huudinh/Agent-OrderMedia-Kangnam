@@ -14,6 +14,9 @@ footage/
 *.png
 *.heic
 
+# trang hướng dẫn sinh ra từ tools/trang-huong-dan.py — artifact, không phải nguồn
+tools/huong-dan.html
+
 # File order tải về để xử lý
 order-*.csv
 order-*.xlsx

@@ -142,12 +142,48 @@ CASE-02 · nam · 29 · CD4 · mũi thấp, đầu mũi to · ⛔ CHƯA CÓ CONS
 
 ---
 
-## 6. BẢNG GIÁ & CHÍNH SÁCH — CHƯA CÓ BẢN HIỆN HÀNH
+## 6. BẢNG GIÁ & CHÍNH SÁCH
+
+### 6a. MẮT / CẮT MÍ — có số từ kịch bản đang chạy
+
+> ⚠️ **Nguồn: kịch bản `L11` đang sản xuất**, không phải bảng giá chính thức từ khối sales.
+> → Dùng được để **viết nháp**, nhưng ⛔ **phải đối chiếu bảng giá hiện hành trước khi lên ads** (`om-G` L03).
+
+| Dịch vụ | Giá | Mô tả đi kèm trong kịch bản |
+|---|---|---|
+| **Cắt mí Plasma** | **8 triệu** | Công nghệ hạn chế sưng, hồi phục nhanh |
+| **Cắt mí 6D** | **12,8 triệu** | Chỉ Nano siêu mảnh 0,01mm |
+| **Cắt mí + tạo khoé** | **13,6 triệu** | Mắt trông dài, cân đối hơn |
+| **Cắt mí + cấy mỡ** | **17,9 triệu** | Mí rõ nét, đầy đặn, tươi trẻ |
+| **Nâng cung mày** | **8,8 triệu** | Loại bỏ da dư, trẻ hoá mắt |
+
+**Trọn gói gồm:** thăm khám · xét nghiệm · bác sĩ chuyên khoa trực tiếp thực hiện · ekip + phòng mổ vô khuẩn · chăm sóc hậu phẫu.
+
+### 6b. ★ BẢO HÀNH — BA MỨC KHÁC NHAU TRONG CÙNG HỆ THỐNG
+
+```
+⚠️ PHÁT HIỆN QUAN TRỌNG — ba con số đang cùng lưu hành:
+
+  "bảo hành nếp mí lên đến 3 NĂM"   ← kịch bản L11 mắt (cụ thể, khả tín nhất)
+  "bảo hành 10 NĂM"                 ← chân dung CD3 mũi
+  "bảo hành TRỌN ĐỜI"               ← nhiều hook mũi đang chạy
+
+→ Ba cái này KHÔNG THỂ cùng đúng cho cùng một dịch vụ.
+```
+
+**Cách agent xử:**
+- **Mắt** → dùng `3 năm` *(có nguồn cụ thể nhất)*, vẫn ghi `⚠️ đối chiếu văn bản`.
+- **Mũi** → ⛔ **không dùng số nào**. `[CHỜ XÁC NHẬN]`, viết *"chính sách bảo hành bằng văn bản"* không kèm số.
+- ⛔ **Không bao giờ dùng *"trọn đời"*** cho đến khi có văn bản xác nhận đúng chữ đó — đây là cờ 🔴 (`om-G` §2).
+
+⚠️ **Bảo hành theo dịch vụ, không theo hệ thống.** ⛔ Đừng lấy `3 năm` của mắt gán cho mũi.
+
+### 6c. MŨI & CÁC DỊCH VỤ KHÁC — CHƯA CÓ BẢN HIỆN HÀNH
 
 ```
 ⚠️ [CHỜ XÁC NHẬN] — ai cấp: khối vận hành / sales
 
-CHẶN: mọi phiếu format L11 (Dịch vụ — Giá/Sales/Chính sách) và mọi hook nấc A4.
+CHẶN: mọi phiếu format L11 và mọi hook nấc A4 của dịch vụ NGOÀI mắt.
 
 Cần cấp:
   · Bảng giá trọn gói hiện hành theo từng dịch vụ + từng mức
@@ -157,11 +193,11 @@ Cần cấp:
   · Chính sách trả góp (có/không, điều kiện)
 ```
 
-⚠️ **Hai con số đang lưu hành trong ads mà agent ⛔ KHÔNG được tự dùng lại:**
-- *"chỉ 31TR"* / *"31TR (39TR)"* — xuất hiện trong nhiều ad cũ, **chưa đối chiếu bảng giá hiện hành**
-- *"bảo hành trọn đời"* / *"bảo hành 10 năm"* — hai mức khác nhau trong cùng bộ dữ liệu → **chắc chắn có một cái sai**
+⚠️ **Con số đang lưu hành trong ads mũi mà agent ⛔ KHÔNG được tự dùng lại:**
+*"chỉ 31TR"* / *"31TR (39TR)"* — xuất hiện trong nhiều ad cũ, **chưa đối chiếu bảng giá hiện hành**. Bảo hành mũi: xem §6b.
 
-⛔ Lấy số từ hook cũ là cách sai phổ biến nhất. Hook cũ **không phải nguồn giá**.
+⛔ Lấy số từ hook cũ là cách sai phổ biến nhất. **Hook cũ không phải nguồn giá.**
+⚠️ Kịch bản `L11` **là** nguồn giá khả tín hơn hook — nhưng chỉ cho **đúng dịch vụ của kịch bản đó**.
 
 ---
 
@@ -175,6 +211,20 @@ Dùng khi điền cột `KHU VỰC` và khi cân nhắc `PORT` hook sang miền 
 | **BẮC** | ⚠️ Yếu hơn Nam — KPI pilot đặt mục tiêu *"≥40% ad đạt TỐT"*, tức hiện dưới mức đó. Nhiều ad TỐT ở Nam **chấm KÉM khi port sang Bắc**. |
 | **MIỀN TÂY** | Công thức riêng và rất mạnh: **"lên thành phố làm"** — *"chị em miền Tây không nâng mũi ở miền Tây mà rủ nhau lên Kangnam Sài Gòn"*. Nhân được sang các tỉnh phía Bắc. |
 | **VIỆT KIỀU** | Tệp riêng (Mỹ/Úc/Canada/Nhật/Hàn/Đài). Nỗi sợ riêng: **về nước ngắn ngày, sợ không kịp hồi phục và cắt chỉ**. |
+
+### ★ Bốn quyền lợi riêng cho tệp Việt kiều — có trong kịch bản thật
+
+Rút từ kịch bản `L02` và `L12`. Đây là **điểm bán mạnh mà hook mũi chưa dùng**:
+
+```
+① Cấp GIẤY XÁC NHẬN PHẪU THUẬT của bệnh viện
+② Hỗ trợ làm THỦ TỤC HẢI QUAN
+③ Hỗ trợ ĐƯA ĐÓN SÂN BAY
+④ Tư vấn ONLINE + hướng dẫn đặt lịch trước khi bay
+```
+
+⚠️ Bốn mục này đã dùng cho **mắt**; mũi chưa có hook nào khai thác. → Đây là **lỗ hổng đáng lấp**, và vì là quyền lợi dịch vụ *(không phải claim y khoa)* nên **sạch pháp chế**.
+⛔ Vẫn phải xác nhận bốn mục này còn áp dụng — `[CHỜ XÁC NHẬN]` khối vận hành.
 
 ⚠️ **Luật port:** một hook `TỐT` ở miền này ⛔ **không tự động `TỐT`** ở miền khác. Port thì **quay lại hook bằng giọng và bối cảnh miền đó**, giữ nguyên thân video (`om-E` §6).
 
@@ -191,9 +241,14 @@ Dùng khi điền cột `KHU VỰC` và khi cân nhắc `PORT` hook sang miền 
 | Kỹ thuật **tuyến bệnh viện** gắn địa chỉ clinic | §2 | 🔴 **CHẶN** — vượt phạm vi chuyên môn |
 | Dùng **ảnh/video khách** chưa có consent | §5 | 🔴 **CHẶN** |
 | Format **L13 / L14 / L15 / L16** | `om-D` §1 | 🟡 **HỎI LẠI** — chưa định nghĩa |
+| Format **L01** | `om-D` §7 | 🟡 **KHUÔN MƯỢN** — chưa có kịch bản mẫu, dùng `L03` rút gọn |
+| Giá **mắt / cắt mí** | §6a | 🟢 **CÓ SỐ NHÁP** — đối chiếu bảng giá hiện hành trước khi lên ads |
+| **Bảo hành mũi** (mọi con số) | §6b | 🔴 **CHẶN** — ba mức đang xung đột |
 | Nói **mốc hồi phục, thời gian mổ** | `om-G` §5 | 🟡 **HỎI LẠI** — cần BS duyệt |
 
-★ **Năm thứ cần xin để mở phần lớn các chặn trên:**
-`① danh sách BS đã xác minh` · `② bảng giá hiện hành` · `③ chính sách bảo hành bằng văn bản` · `④ số giấy phép đủ 7 cơ sở` · `⑤ định nghĩa format L13–L16`.
+★ **Sáu thứ cần xin để mở phần lớn các chặn trên:**
+`① danh sách BS đã xác minh` · `② bảng giá hiện hành các dịch vụ ngoài mắt` · `③ chính sách bảo hành bằng văn bản — ⚠️ ba mức đang xung đột, xem §6b` · `④ số giấy phép đủ 7 cơ sở` · `⑤ định nghĩa format L13–L16` · `⑥ kịch bản mẫu cho L01`.
 
-Agent **in năm dòng này vào khối `[CHỜ XÁC NHẬN]` mỗi lần xuất phiếu**, cho tới khi được cấp.
+Agent **in sáu dòng này vào khối `[CHỜ XÁC NHẬN]` mỗi lần xuất phiếu**, cho tới khi được cấp.
+
+⚠️ **Mục ③ là mục cấp bách nhất.** Ba con số bảo hành khác nhau đang **cùng chạy trên ads thật** — đây không chỉ là bất tiện nội bộ, mà là rủi ro pháp chế đang phát sinh (`om-G` §2, cờ 🔴).

@@ -1,6 +1,33 @@
 # PROMPT — VIẾT KỊCH BẢN (B5)
 
 > Dùng khi hook đã chấm xong, giờ cần phiếu quay được.
+>
+> ★ **Đầu ra có HAI TẦNG** (`om-I` §1): `TẦNG 1` phiếu order — 1 dòng = 1 clip · `TẦNG 2` kịch bản chi tiết — 1 dòng = 1 nhịp, theo **khuôn nhà**. ⛔ Đừng trộn.
+
+---
+
+## Ra kịch bản chi tiết theo khuôn nhà (tầng 2)
+
+```
+Ra kịch bản chi tiết cho clip <mã>, theo đúng khuôn kịch bản của nhà.
+
+- Tra kịch bản mẫu của format đó trước (om-D §7), rồi theo đúng khuôn cột
+- Mỗi dòng một nhịp: STT · VOICE · TEXT · FOOTAGE (+ THIẾT KẾ / NOTE tuỳ format)
+- VOICE là lời đọc nguyên văn; lấy tiếng thật thì ghi mốc giây
+- TEXT ngắn hơn VOICE nhiều, đừng chép lại
+- Dùng đúng thuật ngữ nhà: trám full · chia đôi trám hình trên bsi nói ở dưới
+  · cho bác sĩ xuống góc · khung box comment · ra beauty
+- THIẾT KẾ ghi đúng thông số: Roboto · màu · viền · cỡ chữ
+- Footage: ghi MÔ TẢ cần gì + [CHỜ ĐIỀU PHỐI CẤP ĐƯỜNG DẪN] — đừng bịa đường dẫn Z:\
+- Kết bằng dòng THUMB
+- Cột FIX để trống cho người duyệt
+```
+
+### Nếu clip chạy miền Tây
+```
+Thêm khối TỐI ƯU MIỀN TÂY ở cuối: viết lại VOICE và TEXT bằng giọng miền
+(nha · nghen · hông · liền tay). Giữ nguyên footage, thiết kế và thứ tự nhịp.
+```
 
 ---
 

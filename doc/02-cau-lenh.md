@@ -1,6 +1,6 @@
 # ② DÒNG LỆNH
 
-> Hai script. Cả hai chỉ cần **Python 3.9+**; đọc `.xlsx` cần thêm `pip install openpyxl`.
+> Bốn script. Tất cả chỉ cần **Python 3.9+**; đọc `.xlsx` cần thêm `pip install openpyxl`.
 
 ---
 
@@ -97,16 +97,68 @@ Ví dụ: script bắt được *"đẹp ngay"*, **không** bắt được *"k�
 python tools/gop-tham-khao.py
 ```
 
-Gộp **8 sổ `knowledge/`** theo thứ tự `om-A` → `om-H` thành [`goi/GOP-tri-thuc.md`](../goi/GOP-tri-thuc.md), kèm mục lục và neo liên kết.
+Gộp **10 sổ `knowledge/`** theo thứ tự `om-A` → `om-J` thành [`goi/GOP-tri-thuc.md`](../goi/GOP-tri-thuc.md), kèm mục lục và neo liên kết.
 
 ```
-  Da gop 8 so  ->  goi\GOP-tri-thuc.md
-  99.6 KB · 1610 dong
+  Da gop 10 so  ->  goi\GOP-tri-thuc.md
+  137.4 KB · 2216 dong
 ```
 
 **Chạy lại mỗi lần sửa `knowledge/`.** File gộp sinh tự động — ⛔ đừng sửa trực tiếp trong đó.
 
 Dùng khi nền tảng chỉ cho nạp ít file *(ChatGPT, Gemini)*.
+
+---
+
+## `tools/dem-ngan.py` — đếm ký tự bản ngắn
+
+```bash
+python tools/dem-ngan.py
+```
+
+```
+  Khoi COPY : 7,987 ky tu
+  Gioi han  : 8,000
+  Con lai   : 13  (gan day — them dong nao thi phai cat dong khac)
+```
+
+🔴 **`SYSTEM-PROMPT-NGAN.md` đang gần đầy.** Chạy script này **sau mỗi lần sửa** file đó — ChatGPT Custom GPT cắt phần vượt **không báo lỗi**, nên vượt mà không biết là mất luật chặn ở cuối prompt.
+
+Script trả **exit code 1** khi vượt → dùng được trong hook hoặc CI.
+
+---
+
+## `tools/trang-huong-dan.py` — sinh trang hướng dẫn
+
+```bash
+python tools/trang-huong-dan.py              # ghi ra tools/huong-dan.html
+python tools/trang-huong-dan.py <đường_dẫn>  # ghi ra chỗ khác
+```
+
+```
+tools\huong-dan.html — 423 KB
+  3 thẻ · 16 file tri thức · 31 prompt · 12 câu smoke test
+```
+
+Đọc nội dung từ [`tools/huong-dan.json`](../tools/huong-dan.json) + **đọc thẳng các file nguồn** *(bộ não, 10 sổ, 6 prompt)* để nhúng vào nút Copy → **nút Copy luôn khớp file nguồn**, không bao giờ lệch.
+
+| Việc | Ở đâu |
+|---|---|
+| Sửa **nội dung** trang *(câu chữ, smoke test, prompt, mục chặn)* | `tools/huong-dan.json` |
+| Sửa **style/layout** | `tools/trang-huong-dan.py` — ⚠️ generator **dùng chung** với các agent khác |
+| Sửa tri thức | `knowledge/` → nút Copy tự cập nhật, không phải sửa JSON |
+
+**Quy trình đăng lại sau khi sửa:**
+```bash
+python tools/gop-tham-khao.py      # gộp lại tri thức trước
+python tools/dem-ngan.py           # canh giới hạn bản ngắn
+python tools/trang-huong-dan.py    # rồi mới sinh trang
+```
+Xong thì publish lại `tools/huong-dan.html` vào **đúng URL artifact cũ** để link trong README không đổi.
+
+⛔ `tools/huong-dan.html` **không commit** — nó là artifact sinh ra, không phải nguồn.
+
+> ⚠️ **Generator này dùng chung với `Agent-QC-Telesale`, `Agent-Order-SoLieu`…** Bản trong repo này đã thêm `<meta name="viewport">` *(bản gốc thiếu, làm trang bị thu nhỏ trên điện thoại)*. Nếu sửa style, cân nhắc đồng bộ sang các agent kia.
 
 ---
 
